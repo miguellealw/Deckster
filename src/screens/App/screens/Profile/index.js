@@ -3,7 +3,7 @@ import MediaQuery from "react-responsive";
 
 import SideNavigation from "shared/components/SideNavigation";
 import Navigation from "shared/components/Navigation";
-import CardSlider from "shared/components/CardSlider";
+import DeckSlider from "shared/components/DeckSlider";
 import {
   ProfileContainer,
   ContentContainer,
@@ -32,7 +32,7 @@ const Profile = () => {
 
         <DeckInfo>
           {/* Deckinfo.. */}
-          <CardSlider />
+          <DeckSlider />
           {/* Slider Component with Cards */}
         </DeckInfo>
       </ContentContainer>
