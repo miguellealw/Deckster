@@ -27,13 +27,17 @@ const Main = styled.main`
 `;
 
 const PageTitle = styled.h1`
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 800;
   margin: 0em;
 
   /* @media screen and (min-width: 500px) {
     font-size: 5rem;
   } */
+
+  span {
+    color: #009DFF;
+  }
 `;
 
 const PageSubTitle = styled.h3`
@@ -52,7 +56,7 @@ const StartNowButton = styled.button`
   border-radius: 100rem;
   border: none;
   padding: 0.6rem 2rem;
-  font-size: .8rem;
+  font-size: 0.8rem;
   background: linear-gradient(to bottom, #009dff 0%, #0063ff 100%);
   color: white;
   cursor: pointer;
@@ -64,16 +68,12 @@ const StartNowButton = styled.button`
   } */
 `;
 
-const blueStyles = {
-  color: "#009DFF"
-};
-
 const Home = () => (
   <AppContainer className="App">
     <Navigation />
     <Main>
       <PageTitle>
-        <span style={blueStyles}>Deck</span>ify
+        <span>Deck</span>ify
       </PageTitle>
       <PageSubTitle>Create, Study, and Share Decks of Flashcards</PageSubTitle>
       <Link to="/signup">
