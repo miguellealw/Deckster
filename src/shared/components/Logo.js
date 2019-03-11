@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
+import { Link } from "@reach/router";
 
 const Logo = styled.h2`
   text-transform: uppercase;
   font-size: 0.7rem;
   font-weight: 900;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.2rem;
   margin: 0;
   color: white;
 `;
@@ -15,7 +16,12 @@ const blueStyles = {
 };
 
 export default () => (
-  <Logo>
-    <span style={blueStyles}>Deck</span>ify
-  </Logo>
+  <Link to="/" style={{ textDecoration: "none" }}>
+    <Logo>
+      <span style={blueStyles}>Deck</span>ify
+      <span role="img" aria-label="flashcards">
+        📇
+      </span>
+    </Logo>
+  </Link>
 );

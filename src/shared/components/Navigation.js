@@ -47,9 +47,7 @@ const LoginButton = styled.button`
 const Navigation = () => {
   return (
     <NavigationContatiner>
-      <Link to="/">
-        <Logo />
-      </Link>
+      <Logo />
       <ul style={ulStyles}>
         <li>
           <Link to="/login">
