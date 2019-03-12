@@ -1,4 +1,6 @@
+import React from "react";
 import styled from "styled-components";
+import { Link } from "@reach/router";
 
 export const ProfileContainer = styled.div`
   display: grid;
@@ -46,11 +48,28 @@ export const DeckInfo = styled.div`
   /* width: 100%; */
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 3rem;
 
   /* grid-area: deckInfo; */
+`;
+
+export const Tabs = styled.ul`
+  /* background: rebeccapurple; */
+  margin-bottom: 2rem;
+
+  /* width: 10em; */
+
+  li {
+    display: inline-block;
+    margin: 0 1rem;
+
+    a {
+      color: #b0b0b0;
+    }
+  }
 `;
 
 export const Name = styled.span`
@@ -82,3 +101,14 @@ export const ImageContainer = styled.div`
     object-position: center;
   }
 `;
+
+export const NavLink = props => (
+  <Link
+    {...props}
+    getProps={({ isCurrent }) => ({
+      style: {
+        textDecoration: isCurrent ? "underline" : "none"
+      }
+    })}
+  />
+);

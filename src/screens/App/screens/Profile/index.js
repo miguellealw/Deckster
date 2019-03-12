@@ -1,5 +1,6 @@
 import React from "react";
 import MediaQuery from "react-responsive";
+import { Router } from "@reach/router";
 
 import SideNavigation from "shared/components/SideNavigation";
 import Navigation from "shared/components/Navigation";
@@ -11,7 +12,9 @@ import {
   DeckInfo,
   Name,
   Email,
-  ImageContainer
+  ImageContainer,
+  Tabs,
+  NavLink
 } from "./components";
 
 const Profile = () => {
@@ -31,9 +34,19 @@ const Profile = () => {
         </UserInfo>
 
         <DeckInfo>
-          {/* Deckinfo.. */}
-          <DeckSlider />
-          {/* Slider Component with Cards */}
+          <Tabs>
+            <li>
+              <NavLink to="my-decks">My Decks</NavLink>
+            </li>
+            <li>
+              <NavLink to="favorited">Favorited</NavLink>
+            </li>
+          </Tabs>
+
+          <Router>
+            <DeckSlider path="my-decks" />
+            <DeckSlider path="favorited" />
+          </Router>
         </DeckInfo>
       </ContentContainer>
     </ProfileContainer>
