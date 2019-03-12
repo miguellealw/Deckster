@@ -6,10 +6,6 @@ export const ProfileContainer = styled.div`
   display: grid;
   grid-template-rows: 1fr auto;
 
-  /* grid-template-areas:
-    "navigation userInfo"
-    "navigation deckInfo"; */
-
   /* 500px or higher */
   @media (min-width: 500px) {
     grid-template-columns: 1fr 5fr;
@@ -44,30 +40,43 @@ export const UserInfo = styled.div`
 `;
 
 export const DeckInfo = styled.div`
-  background-color: #f4f4f4;
+  font-size: 1rem;
+  background-color: ${({ theme }) => theme.colors.primaryGray};
   /* width: 100%; */
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3rem;
+  padding: 3em;
 
-  /* grid-area: deckInfo; */
+  position: relative;
 `;
 
 export const Tabs = styled.ul`
-  /* background: rebeccapurple; */
-  margin-bottom: 2rem;
+  font-size: 1rem;
+  background: ${({ theme }) => theme.colors.secondary};
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 0.625em;
 
-  /* width: 10em; */
+  margin-bottom: 1.3em;
+  width: 100%;
+  height: 3em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* position: absolute;
+  top: 0; */
 
   li {
     display: inline-block;
-    margin: 0 1rem;
+    margin: 0 1em;
 
     a {
-      color: #b0b0b0;
+      /* color: #b0b0b0; */
+      color: white;
     }
   }
 `;
@@ -78,14 +87,16 @@ export const Name = styled.span`
 
 export const Email = styled.span`
   font-size: 0.8em;
-  color: #b0b0b0;
+  color: ${({ theme }) => theme.colors.secondaryGray};
 `;
 
 export const ImageContainer = styled.div`
-  width: 5rem;
-  height: 5rem;
+  font-size: 1rem;
 
-  border-radius: 100rem;
+  width: 5em;
+  height: 5em;
+
+  border-radius: 100em;
   overflow: hidden;
 
   display: flex;
@@ -95,8 +106,8 @@ export const ImageContainer = styled.div`
   background: #ccc;
 
   img {
-    width: 5rem;
-    height: 5rem;
+    width: 5em;
+    height: 5em;
     object-fit: cover;
     object-position: center;
   }

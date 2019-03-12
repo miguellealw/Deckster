@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "@reach/router";
+import Button from "shared/components/Button";
 
 import Navigation from "shared/components/Navigation";
 
@@ -36,7 +37,7 @@ const PageTitle = styled.h1`
   } */
 
   span {
-    color: #009DFF;
+    color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
@@ -57,7 +58,7 @@ const StartNowButton = styled.button`
   border: none;
   padding: 0.6rem 2rem;
   font-size: 0.8rem;
-  background: linear-gradient(to bottom, #009dff 0%, #0063ff 100%);
+  background: ${({ theme }) => theme.colors.gradient};
   color: white;
   cursor: pointer;
   font-weight: bold;
@@ -77,7 +78,8 @@ const Home = () => (
       </PageTitle>
       <PageSubTitle>Create, Study, and Share Decks of Flashcards</PageSubTitle>
       <Link to="/signup">
-        <StartNowButton>Start Now</StartNowButton>
+        <Button>Start Now</Button>
+        {/* <StartNowButton>Start Now</StartNowButton> */}
       </Link>
     </Main>
   </AppContainer>

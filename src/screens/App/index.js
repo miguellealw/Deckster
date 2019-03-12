@@ -2,7 +2,9 @@ import React, { Component, Suspense } from "react";
 import { createGlobalStyle } from "styled-components";
 import { Router } from "@reach/router";
 import Loader from "react-loader-spinner";
+import { ThemeProvider } from "styled-components";
 
+import theme from "shared/theme";
 import Home from "./screens/Home";
 const Profile = React.lazy(() => import("./screens/Profile"));
 const Decks = React.lazy(() => import("./screens/Decks"));
@@ -30,7 +32,10 @@ const GlobalStyle = createGlobalStyle`
 
   :root {
     @media (min-width: 500px) {
-      font-size: 1.4em;
+      /* TODO: dont do this */
+      /* font-size: 1.4em; */
+
+      font-size: 1em;
     }
   }
 
@@ -54,14 +59,16 @@ class App extends Component {
             <Loader type="Puff" color="#009dff" height="50" width="50" />
           }
         >
-          <Router>
-            <Home path="/" />
-            <Login path="/login" />
-            <Signup path="/signup" />
-            <Profile path="/profile" />
-            <Decks path="/decks" />
-            <Explore path="/explore" />
-          </Router>
+          <ThemeProvider theme={theme}>
+            <Router>
+              <Home path="/" />
+              <Login path="login" />
+              <Signup path="signup" />
+              <Profile path="profile/*" />
+              <Decks path="decks" />
+              <Explore path="explore" />
+            </Router>
+          </ThemeProvider>
         </Suspense>
       </>
     );
