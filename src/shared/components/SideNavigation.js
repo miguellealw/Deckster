@@ -40,6 +40,7 @@ const NavContainer = styled.nav`
     margin-bottom: 2rem;
     text-align: center;
     font-size: 0.8rem;
+    list-style: none;
     /* border-bottom: 1px solid #212D40; */
   }
 
@@ -53,13 +54,24 @@ const NavContainer = styled.nav`
 const NavLink = props => (
   <Link
     {...props}
-    getProps={({ isCurrent }) => ({
+    getProps={({ isCurrent, isPartiallyCurrent }) => ({
       style: {
         color: isCurrent ? "default" : "white"
       }
     })}
   />
 );
+
+const PartialNavLink = props => (
+  <Link
+    {...props}
+    getProps={({ isCurrent, isPartiallyCurrent }) => ({
+      style: {
+        color: isPartiallyCurrent ? "default" : "white"
+      }
+    })}
+  />
+)
 
 const SideNavigation = () => {
   return (
@@ -69,13 +81,13 @@ const SideNavigation = () => {
       </Logo>
       <ul>
         <li>
-          <NavLink to="/profile">Profile</NavLink>
+          <PartialNavLink to="/profile">Profile</PartialNavLink>
         </li>
         <li>
-          <NavLink to="/decks">Decks</NavLink>
+          <PartialNavLink to="/decks">Decks</PartialNavLink>
         </li>
         <li>
-          <NavLink to="/explore">Explore</NavLink>
+          <PartialNavLink to="/explore">Explore</PartialNavLink>
         </li>
       </ul>
       <NavLink to="/">Log Out</NavLink>
