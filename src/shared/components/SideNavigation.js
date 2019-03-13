@@ -6,6 +6,7 @@ import Logo from "shared/components/Logo";
 
 const NavContainer = styled.nav`
   /* min-width: 6rem; */
+  /* font-size: 1rem; */
   height: 100vh;
 
   position: sticky;
@@ -13,7 +14,7 @@ const NavContainer = styled.nav`
   top: 0px;
 
   background-color: #152134;
-  padding: 1rem;
+  padding: 5em;
 
   display: flex;
   flex-direction: column;
@@ -21,10 +22,6 @@ const NavContainer = styled.nav`
   align-items: center;
 
   /* grid-area: navigation */
-
-  .logo {
-    /* margin: 2rem 0; */
-  }
 
   ul {
     align-self: center;
@@ -37,9 +34,9 @@ const NavContainer = styled.nav`
   }
 
   li {
-    margin-bottom: 2rem;
+    margin-bottom: 2em;
     text-align: center;
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
     list-style: none;
     /* border-bottom: 1px solid #212D40; */
   }
@@ -47,14 +44,14 @@ const NavContainer = styled.nav`
   a {
     /* margin-bottom: 2rem; */
     text-align: center;
-    font-size: 0.8rem;
+    /* font-size: 0.8em; */
   }
 `;
 
 const NavLink = props => (
   <Link
     {...props}
-    getProps={({ isCurrent, isPartiallyCurrent }) => ({
+    getProps={({ isCurrent }) => ({
       style: {
         color: isCurrent ? "default" : "white"
       }
@@ -65,20 +62,18 @@ const NavLink = props => (
 const PartialNavLink = props => (
   <Link
     {...props}
-    getProps={({ isCurrent, isPartiallyCurrent }) => ({
+    getProps={({ isPartiallyCurrent }) => ({
       style: {
         color: isPartiallyCurrent ? "default" : "white"
       }
     })}
   />
-)
+);
 
 const SideNavigation = () => {
   return (
     <NavContainer>
-      <Logo className="logo">
-        Deckify
-      </Logo>
+      <Logo>Deckify</Logo>
       <ul>
         <li>
           <PartialNavLink to="/profile">Profile</PartialNavLink>
