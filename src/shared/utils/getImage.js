@@ -9,7 +9,6 @@ function getRandomKeyword() {
     "tech",
     "architecture",
     "travel",
-    "fashion"
   ];
 
   // Get random keyword from array
