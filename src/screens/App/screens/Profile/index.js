@@ -1,6 +1,7 @@
 import React from "react";
 import MediaQuery from "react-responsive";
 import { Router } from "@reach/router";
+import { withTheme } from "styled-components";
 
 import SideNavigation from "shared/components/SideNavigation";
 import Navigation from "shared/components/Navigation";
@@ -17,12 +18,15 @@ import {
   NavLink
 } from "./components";
 
-const Profile = () => {
+const Profile = ({ theme }) => {
   return (
     <ProfileContainer>
-      <MediaQuery minWidth={500}>
-        {matches => (matches ? <SideNavigation /> : <Navigation />)}
+      <MediaQuery maxWidth={theme.breakpoints.phoneOnly}>
+        {matches => (matches ? <Navigation /> : <SideNavigation />)}
       </MediaQuery>
+      {/* <MediaQuery minWidth={500}>
+        {matches => (matches ? <SideNavigation /> : <Navigation />)}
+      </MediaQuery> */}
 
       <ContentContainer>
         <UserInfo>
@@ -53,4 +57,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default withTheme(Profile);

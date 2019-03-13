@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "@reach/router";
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 import MediaQuery from "react-responsive";
 
 import Logo from "shared/components/Logo";
@@ -13,14 +13,12 @@ const NavigationContainer = styled.nav`
   padding: 0 1rem;
   height: 3.5rem;
   position: relative;
-  background-color: ${({theme}) => theme.colors.secondary};
+  background-color: ${({ theme }) => theme.colors.secondary};
   z-index: 10;
 
   width: 100%;
 
-  @media (min-width: 500px) {
-    width: 100%;
-  }
+  /* ${({ theme: { media } }) => media.desktopUp`background: dodgerblue;`} */
 `;
 
 const ulStyles = {
@@ -35,13 +33,13 @@ const NavButton = styled.button`
   padding: 0.5rem 2rem;
   border-radius: 100rem;
   background: none;
-  border: 2px solid ${({theme}) => theme.colors.primary};
+  border: 2px solid ${({ theme }) => theme.colors.primary};
   cursor: pointer;
   color: white;
 
   &:hover {
     border: 2px solid #0063ff;
-    background: ${({theme}) => theme.colors.gradient};
+    background: ${({ theme }) => theme.colors.gradient};
   }
 `;
 
@@ -86,7 +84,7 @@ const DropdownContainer = styled.ul`
   font-size: 0.8rem;
   min-width: 10rem;
   min-height: 3rem;
-  background-color: ${({theme}) => theme.colors.secondary};
+  background-color: ${({ theme }) => theme.colors.secondary};
   /* background: purple; */
 
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
@@ -103,7 +101,7 @@ const DropdownContainer = styled.ul`
     /* border-bottom: 1px solid #20324e; */
 
     &:hover {
-      background: ${({theme}) => theme.colors.gradients};
+      background: ${({ theme }) => theme.colors.gradients};
     }
   }
 `;
@@ -122,14 +120,14 @@ const Dropdown = () => (
   </DropdownContainer>
 );
 
-const Navigation = () => {
+const Navigation = ({ theme }) => {
   const [isOpen, setOpen] = useState(false);
 
   return (
     <NavigationContainer>
       <Logo />
       <ButtonContainer style={ulStyles}>
-        <MediaQuery minWidth="500px">
+        <MediaQuery minWidth={theme.breakpoints.tabletPortraitUp}>
           <li>
             <Link to="/profile/my-decks">
               <NavButton>Profile</NavButton>
@@ -148,15 +146,17 @@ const Navigation = () => {
         </MediaQuery>
 
         {/* Nav Icon */}
-        <MediaQuery maxWidth="500px">
+        <MediaQuery maxWidth={theme.breakpoints.phoneOnly}>
           <li>
             <NavIcon aria-label="menu" onClick={() => setOpen(!isOpen)} />
           </li>
         </MediaQuery>
       </ButtonContainer>
-      <MediaQuery maxWidth="500px">{isOpen && <Dropdown />}</MediaQuery>
+      <MediaQuery maxWidth={theme.breakpoints.phoneOnly}>
+        {isOpen && <Dropdown />}
+      </MediaQuery>
     </NavigationContainer>
   );
 };
 
-export default React.memo(Navigation);
+export default React.memo(withTheme(Navigation));

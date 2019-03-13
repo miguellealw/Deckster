@@ -8,9 +8,6 @@ import Button from "shared/components/Button";
 
 const PageContainer = styled.div`
   width: 100%;
-
-  @media (max-width: 500px) {
-  }
 `;
 
 const FormContainer = styled.div`
@@ -23,9 +20,6 @@ const FormContainer = styled.div`
   margin-top: -1rem;
   /* position: absolute; */
   /* top: 0; */
-
-  @media (max-width: 500px) {
-  }
 `;
 
 const Title = styled.h2`
@@ -60,12 +54,19 @@ const LabelContainer = styled.div`
     font-weight: bold;
     /* align-self: flex-start; */
     margin-right: 1rem;
+    text-align: right;
   }
 
-  @media (max-width: 500px) {
+  ${({ theme }) => theme.media.phoneOnly`
     width: 100%;
-    text-align: left;
-  }
+    
+    label {
+      text-align: left;
+      width: 100%;
+      margin-right: auto;
+      margin-bottom: 0.8rem;
+    }
+  `}
 `;
 
 const InputContainer = styled.div`
@@ -77,15 +78,9 @@ const InputContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 500px) {
+  ${({ theme }) => theme.media.phoneOnly`
     flex-direction: column;
-
-    label {
-      width: 100%;
-      margin-right: auto;
-      margin-bottom: 0.8rem;
-    }
-  }
+  `}
 `;
 
 const InputFieldContainer = styled.div`
@@ -114,7 +109,6 @@ const ButtonContainer = styled.div`
 
 const Login = () => {
   const [value, setValue] = useState("");
-
   const onChange = e => setValue(e.target.value);
 
   return (

@@ -8,9 +8,6 @@ import Button from "shared/components/Button";
 
 const PageContainer = styled.div`
   width: 100vw;
-
-  @media (max-width: 500px) {
-  }
 `;
 
 const FormContainer = styled.div`
@@ -21,11 +18,9 @@ const FormContainer = styled.div`
   justify-content: center;
   background-color: white;
   margin-top: -3.5rem;
+
   /* position: absolute;
   top: 0; */
-
-  @media (max-width: 500px) {
-  }
 `;
 
 const Title = styled.h2`
@@ -62,9 +57,7 @@ const LabelContainer = styled.div`
     margin-right: 1rem;
   }
 
-  @media (max-width: 500px) {
-    width: 100%;
-  }
+  ${({ theme }) => theme.media.phoneOnly`width: 100%;`}
 `;
 
 const InputContainer = styled.div`
@@ -76,7 +69,7 @@ const InputContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 500px) {
+  ${({ theme }) => theme.media.phoneOnly`
     flex-direction: column;
 
     label {
@@ -84,7 +77,8 @@ const InputContainer = styled.div`
       margin-right: auto;
       margin-bottom: 0.8rem;
     }
-  }
+  `}
+  
 `;
 
 const InputFieldContainer = styled.div`

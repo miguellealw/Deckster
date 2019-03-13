@@ -4,23 +4,24 @@ import { Link } from "@reach/router";
 
 export const ProfileContainer = styled.div`
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-columns: 1fr 5fr;
 
-  /* 500px or higher */
-  @media (min-width: 500px) {
-    grid-template-columns: 1fr 5fr;
-  }
+  /* 699px or lower */
+  ${({ theme }) => theme.media.phoneOnly`
+    grid-template-columns: none;
+    grid-template-rows: 1fr auto;
+  `}
 `;
 
 export const ContentContainer = styled.div`
   /* width: 100vw; */
 
   display: grid;
-  grid-template-rows: 0.3fr 1fr;
+  grid-template-rows: 1fr 2fr;
 
-  @media (min-width: 500px) {
-    grid-template-rows: 1fr 2fr;
-  }
+  ${({ theme }) => theme.media.phoneOnly`
+    grid-template-rows: 0.3fr 1fr;
+  `}
 `;
 
 // TODO: check if section element is better
