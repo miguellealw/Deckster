@@ -2,14 +2,13 @@ import React, { Component, Suspense } from "react";
 import { createGlobalStyle } from "styled-components";
 import { Router } from "@reach/router";
 import Loader from "react-loader-spinner";
-import { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 
 import theme from "shared/theme";
 import Home from "./screens/Home";
 const Profile = React.lazy(() => import("./screens/Profile"));
 const Decks = React.lazy(() => import("./screens/Decks"));
 const Explore = React.lazy(() => import("./screens/Explore"));
-
 const Login = React.lazy(() => import("./screens/Auth/Login"));
 const Signup = React.lazy(() => import("./screens/Auth/Signup"));
 
@@ -31,12 +30,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   :root {
-    @media (min-width: 500px) {
-      /* TODO: dont do this */
-      /* font-size: 1.4em; */
-
-      font-size: 1em;
-    }
+    font-size: 1rem;
+    /* ${theme.media.phoneOnly`
+      font-size: 1.2 rem;
+    `} */
   }
 
   a { 
@@ -49,6 +46,16 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const LoaderContainer = styled.div`
+  width: 100%;
+  height: 100vh;
+  /* background: pink; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 class App extends Component {
   render() {
     return (
@@ -56,7 +63,13 @@ class App extends Component {
         <GlobalStyle />
         <Suspense
           fallback={
-            <Loader type="Puff" color="#009dff" height="50" width="50" />
+            <LoaderContainer>
+              <Loader
+                type="Puff"
+                height="50"
+                width="50"
+              />
+            </LoaderContainer>
           }
         >
           <ThemeProvider theme={theme}>

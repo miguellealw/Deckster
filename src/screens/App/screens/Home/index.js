@@ -6,8 +6,8 @@ import Button from "shared/components/Button";
 import Navigation from "shared/components/Navigation";
 
 const AppContainer = styled.div`
-  /* width: 85%; */
   min-height: 100vh;
+  /* width: 85%; */
   /* margin: 0 auto; */
 `;
 
@@ -47,26 +47,8 @@ const PageSubTitle = styled.h3`
   ${({ theme }) => theme.media.phoneOnly`font-size: .8rem`}
 `;
 
-// const StartNowButton = styled.button`
-//   font-family: Nunito;
-//   border-radius: 100rem;
-//   border: none;
-//   padding: 0.6rem 2rem;
-//   font-size: 0.8rem;
-//   background: ${({ theme }) => theme.colors.gradient};
-//   color: white;
-//   cursor: pointer;
-//   font-weight: bold;
-//   margin-top: 1rem;
-
-//   /* @media screen and (min-width: 500px) {
-//     font-size: 1.2rem;
-//   } */
-// `;
-
 const StartNowButton = styled(Button)`
   /* font-size: 0.8rem; */
-
 `;
 
 const Home = () => (
