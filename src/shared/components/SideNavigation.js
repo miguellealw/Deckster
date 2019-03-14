@@ -5,7 +5,7 @@ import { Link } from "@reach/router";
 import Logo from "shared/components/Logo";
 
 const NavContainer = styled.nav`
-  /* min-width: 6rem; */
+  /* width: 15em; */
   /* font-size: 1rem; */
   height: 100vh;
 
@@ -14,7 +14,7 @@ const NavContainer = styled.nav`
   top: 0px;
 
   background-color: #152134;
-  padding: 5em;
+  padding: 3em;
 
   display: flex;
   flex-direction: column;
@@ -36,14 +36,14 @@ const NavContainer = styled.nav`
   li {
     margin-bottom: 2em;
     text-align: center;
-    /* font-size: 0.8rem; */
     list-style: none;
+    /* font-size: 0.8rem; */
     /* border-bottom: 1px solid #212D40; */
   }
 
   a {
-    /* margin-bottom: 2rem; */
     text-align: center;
+    /* margin-bottom: 2rem; */
     /* font-size: 0.8em; */
   }
 `;

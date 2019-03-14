@@ -7,7 +7,7 @@ import Deck from "./Deck";
 const DeckSliderContainer = styled.div`
   min-width: 75vw;
   max-width: 75vw;
-  height: 20rem;
+  height: 20em;
 
   background: white;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);

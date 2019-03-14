@@ -4,22 +4,24 @@ import { Link } from "@reach/router";
 
 export const ProfileContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: none;
+  grid-template-rows: 1fr auto;
+  /* grid-template-rows: 1fr; */
 
-  /* 699px or lower */
-  ${({ theme }) => theme.media.phoneOnly`
-    grid-template-columns: none;
-    grid-template-rows: 1fr auto;
+  /* 900px up */
+  ${({ theme }) => theme.media.tabletLandscapeUp`
+    grid-template-columns: 0.8fr 5fr;
   `}
 `;
 
 export const ContentContainer = styled.div`
   /* width: 100vw; */
+  font-size: 1.3rem;
 
   display: grid;
   grid-template-rows: 1fr 2fr;
 
-  ${({ theme }) => theme.media.phoneOnly`
+  ${({ theme }) => theme.media.tabletLandscapeUp`
     grid-template-rows: 0.3fr 1fr;
   `}
 `;
@@ -34,10 +36,39 @@ export const UserInfo = styled.div`
   justify-content: center;
 
   span {
-    margin-top: 0.5rem;
+    margin-top: 0.5em;
   }
 
-  /* grid-area: userInfo */
+  ${({ theme }) => theme.media.phoneOnly`
+    font-size: 1.3rem;
+  `}
+`;
+
+export const ImageContainer = styled.div`
+  font-size: 1rem;
+
+  width: 5em;
+  height: 5em;
+
+  border-radius: 100em;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #ccc;
+
+  img {
+    width: 5em;
+    height: 5em;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  ${({ theme }) => theme.media.phoneOnly`
+    font-size: 1.3rem;
+  `}
 `;
 
 export const DeckInfo = styled.div`
@@ -52,6 +83,10 @@ export const DeckInfo = styled.div`
   padding: 3em;
 
   position: relative;
+
+  ${({ theme }) => theme.media.phoneOnly`
+    padding: 1em;
+  `}
 `;
 
 export const Tabs = styled.ul`
@@ -89,29 +124,6 @@ export const Name = styled.span`
 export const Email = styled.span`
   font-size: 0.8em;
   color: ${({ theme }) => theme.colors.secondaryGray};
-`;
-
-export const ImageContainer = styled.div`
-  font-size: 1rem;
-
-  width: 5em;
-  height: 5em;
-
-  border-radius: 100em;
-  overflow: hidden;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: #ccc;
-
-  img {
-    width: 5em;
-    height: 5em;
-    object-fit: cover;
-    object-position: center;
-  }
 `;
 
 export const NavLink = props => (

@@ -21,7 +21,7 @@ import {
 const Profile = ({ theme }) => {
   return (
     <ProfileContainer>
-      <MediaQuery maxWidth={theme.breakpoints.phoneOnly}>
+      <MediaQuery maxWidth={theme.breakpoints.tabletLandscapeUp}>
         {matches => (matches ? <Navigation /> : <SideNavigation />)}
       </MediaQuery>
       {/* <MediaQuery minWidth={500}>
