@@ -5,107 +5,17 @@ import { Link } from "@reach/router";
 import Input from "shared/components/Input";
 import Navigation from "shared/components/Navigation";
 import Button from "shared/components/Button";
-
-const PageContainer = styled.div`
-  width: 100%;
-`;
-
-const FormContainer = styled.div`
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: white;
-  margin-top: -1rem;
-  /* position: absolute; */
-  /* top: 0; */
-`;
-
-const Title = styled.h2`
-  font-family: "Nunito";
-  font-weight: bold;
-  font-size: 2.3em;
-  text-align: center;
-  margin-bottom: 3rem;
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  /* min-width: 40rem; */
-  margin: 0 auto;
-
-  /* background: pink; */
-`;
-
-const LabelContainer = styled.div`
-  font-size: 0.8em;
-  flex: 1;
-  /* background: tomato; */
-
-  display: flex;
-  justify-content: flex-end;
-
-  label {
-    font-weight: bold;
-    /* align-self: flex-start; */
-    margin-right: 1rem;
-    text-align: right;
-  }
-
-  ${({ theme }) => theme.media.phoneOnly`
-    width: 100%;
-    
-    label {
-      text-align: left;
-      width: 100%;
-      margin-right: auto;
-      margin-bottom: 0.8rem;
-    }
-  `}
-`;
-
-const InputContainer = styled.div`
-  width: 100%;
-  /* background: cyan; */
-  margin-bottom: 1rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  ${({ theme }) => theme.media.phoneOnly`
-    flex-direction: column;
-  `}
-`;
-
-const InputFieldContainer = styled.div`
-  flex: 4;
-  /* background: purple; */
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const SignupMessage = styled.span`
-  /* background: red; */
-  font-size: 0.8em;
-  margin-top: -1rem;
-  align-self: flex-end;
-`;
-
-const ButtonContainer = styled.div`
-  width: 100%;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+import {
+  PageContainer,
+  FormContainer,
+  Title,
+  Form,
+  LabelContainer,
+  InputContainer,
+  InputFieldContainer,
+  SignupMessage,
+  ButtonContainer
+} from "./components";
 
 const Login = () => {
   const [value, setValue] = useState("");
