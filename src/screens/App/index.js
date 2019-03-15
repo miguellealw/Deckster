@@ -63,6 +63,7 @@ class App extends Component {
         <GlobalStyle />
         <Suspense
           fallback={
+            // FIXME: fix loader
             <LoaderContainer>
               <Loader
                 type="Puff"

@@ -15,14 +15,20 @@ import {
   Email,
   ImageContainer,
   Tabs,
-  NavLink
+  NavLink,
+  CreateDeckModal
 } from "./components";
 
 const Profile = ({ theme }) => {
+  const [isOpen, setOpen] = React.useState(false);
+
+  const handleClose = () => setOpen(false);
+  const handleOpen = () => setOpen(true);
+
   return (
     <ProfileContainer>
-      <MediaQuery maxWidth={theme.breakpoints.tabletLandscapeUp}>
-        {matches => (matches ? <Navigation /> : <SideNavigation />)}
+      <MediaQuery minWidth={theme.breakpoints.tabletLandscapeUp}>
+        {matches => (matches ? <SideNavigation /> : <Navigation />)}
       </MediaQuery>
       {/* <MediaQuery minWidth={500}>
         {matches => (matches ? <SideNavigation /> : <Navigation />)}
@@ -45,11 +51,19 @@ const Profile = ({ theme }) => {
             <li>
               <NavLink to="favorited">Favorited</NavLink>
             </li>
+            <li onClick={handleOpen}>
+              <NavLink to="create-deck">Create Deck</NavLink>
+            </li>
           </Tabs>
 
           <Router>
             <DeckSlider path="my-decks" />
             <DeckSlider path="favorited" />
+            <CreateDeckModal
+              path="create-deck"
+              isOpen={isOpen}
+              handleClose={handleClose}
+            />
           </Router>
         </DeckInfo>
       </ContentContainer>

@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "@reach/router";
+import ReactModal from "react-modal";
+
+import FormInput from "shared/components/FormInput";
+import Button from "shared/components/Button";
 
 export const ProfileContainer = styled.div`
   display: grid;
@@ -45,7 +49,7 @@ export const UserInfo = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  font-size: 1rem;
+  font-size: 1.3rem;
 
   width: 5em;
   height: 5em;
@@ -58,6 +62,7 @@ export const ImageContainer = styled.div`
   align-items: center;
 
   background: #ccc;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 
   img {
     width: 5em;
@@ -67,7 +72,7 @@ export const ImageContainer = styled.div`
   }
 
   ${({ theme }) => theme.media.phoneOnly`
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   `}
 `;
 
@@ -136,3 +141,78 @@ export const NavLink = props => (
     })}
   />
 );
+
+const FormContainer = styled.form`
+  width: 30em;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  position: relative;
+  margin: 0 auto;
+  /* background: pink; */
+
+  h2 {
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    color: ${props => props.theme.colors.primaryGray}
+    margin: 1em 0;
+  }
+`;
+
+const CloseIcon = styled.i`
+  font-size: 2em;
+  position: absolute;
+  top: 0.3em;
+  right: 0.5em;
+  cursor: pointer;
+  color: ${props => props.theme.colors.secondaryGray};
+
+  :hover {
+    color: black;
+  }
+`;
+
+export const CreateDeckModal = ({ isOpen, handleClose }) => {
+  return (
+    <ReactModal
+      isOpen={isOpen}
+      contentLabel="Create Deck Form"
+      style={{
+        content: {
+          width: "35em",
+          margin: "0 auto",
+          borderRadius: "1em"
+        },
+        overlay: {
+          background: "rgba(0,0,0,.6)"
+        }
+      }}
+    >
+      <CloseIcon className="icon ion-md-close" onClick={handleClose} />
+      <FormContainer>
+        <h2>Create Deck</h2>
+        <FormInput
+          label="Deck Name"
+          placeholder="World Capitals"
+          direction="column"
+        />
+        <FormInput
+          label="Description (optional)"
+          placeholder="Deck About the Capitals of the World"
+          direction="column"
+        />
+        <FormInput
+          label="Tags"
+          placeholder="Geography, History"
+          direction="column"
+        />
+        <Button>Create Deck</Button>
+      </FormContainer>
+    </ReactModal>
+  );
+};
