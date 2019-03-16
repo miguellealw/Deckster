@@ -95,7 +95,7 @@ export const DeckInfo = styled.div`
 `;
 
 export const Tabs = styled.ul`
-  font-size: 1rem;
+  font-size: 1em;
   background: ${({ theme }) => theme.colors.secondary};
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
   border-radius: 0.625em;
@@ -120,6 +120,10 @@ export const Tabs = styled.ul`
       color: white;
     }
   }
+
+  ${({ theme }) => theme.media.phoneOnly`
+    font-size: .8em;
+  `}
 `;
 
 export const Name = styled.span`
@@ -143,7 +147,8 @@ export const NavLink = props => (
 );
 
 const FormContainer = styled.form`
-  width: 30em;
+  width: 100%;
+  /* width: 100%; */
   height: 100%;
 
   display: flex;
@@ -162,6 +167,11 @@ const FormContainer = styled.form`
     color: ${props => props.theme.colors.primaryGray}
     margin: 1em 0;
   }
+
+  ${({ theme }) => theme.media.phoneOnly`
+    font-size: .6em;
+    // width: 20em;
+  `}
 `;
 
 const CloseIcon = styled.i`
@@ -175,6 +185,13 @@ const CloseIcon = styled.i`
   :hover {
     color: black;
   }
+
+  ${({ theme }) => theme.media.phoneOnly`
+    font-size: 1em;
+    position: absolute;
+    top: .8em;
+    right: 1em;
+  `}
 `;
 
 export const CreateDeckModal = ({ isOpen, handleClose }) => {
@@ -184,12 +201,14 @@ export const CreateDeckModal = ({ isOpen, handleClose }) => {
       contentLabel="Create Deck Form"
       style={{
         content: {
-          width: "35em",
+          minWidth: "2em",
+          maxWidth: "35em",
           margin: "0 auto",
           borderRadius: "1em"
         },
         overlay: {
-          background: "rgba(0,0,0,.6)"
+          background: "rgba(0,0,0,.6)",
+          zIndex: "10"
         }
       }}
     >

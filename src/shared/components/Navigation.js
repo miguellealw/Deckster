@@ -14,7 +14,7 @@ const NavigationContainer = styled.nav`
   height: 3.5rem;
   position: relative;
   background-color: ${({ theme }) => theme.colors.secondary};
-  z-index: 10;
+  z-index: 3;
 
   width: 100%;
 

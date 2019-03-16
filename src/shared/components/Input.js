@@ -2,10 +2,12 @@
 import styled from "styled-components";
 
 export default styled.input`
-  width: 20rem;
-  padding: 0.8rem 0;
-  text-indent: 1rem;
-  border-radius: 100rem;
+  font-size: 1em;
+  width: 20em;
+  /* width: 100%; */
+  padding: 0.8em 0;
+  text-indent: 1em;
+  border-radius: 100em;
   border: none;
   background-color: ${props =>
     props.background ? props.background : "#f4f4f4"};

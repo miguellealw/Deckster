@@ -7,7 +7,7 @@ export const InputContainer = styled.div.attrs(({ direction }) => ({
 }))`
   /* width: 100%; */
   /* background-color: cyan; */
-  margin-bottom: 2rem;
+  margin-bottom: 2em;
 
   display: flex;
   justify-content: center;
@@ -20,7 +20,7 @@ export const InputContainer = styled.div.attrs(({ direction }) => ({
     label {
       width: 100%;
       margin-right: auto;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.8em;
     }
   `}
 `;
@@ -37,7 +37,7 @@ export const LabelContainer = styled.div`
   width: 100%;
   label {
     font-weight: bold;
-    margin-right: 1rem;
+    margin-right: 1em;
   }
   ${({ theme }) => theme.media.phoneOnly`width: 100%;`}
 `;

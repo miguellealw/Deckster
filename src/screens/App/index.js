@@ -13,10 +13,10 @@ const Login = React.lazy(() => import("./screens/Auth/Login"));
 const Signup = React.lazy(() => import("./screens/Auth/Signup"));
 
 const GlobalStyle = createGlobalStyle`
-  html {
+  /* html {
     min-width: 100%;
     min-height: 100vh;
-  }
+  } */
 
   *,
   *::before,
