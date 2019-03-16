@@ -12,8 +12,8 @@ export const FormContainer = styled.div`
   justify-content: center;
   background-color: white;
   margin-top: -1rem;
-  /* position: absolute; */
-  /* top: 0; */
+
+  ${({ theme }) => theme.media.phoneOnly`font-size: .8em;`}
 `;
 
 export const Title = styled.h2`
