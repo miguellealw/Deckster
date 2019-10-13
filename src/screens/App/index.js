@@ -6,6 +6,7 @@ import styled, { ThemeProvider } from "styled-components";
 
 import theme from "shared/theme";
 import Home from "./screens/Home";
+import Layout from "shared/components/Layout";
 const Profile = React.lazy(() => import("./screens/Profile"));
 const Decks = React.lazy(() => import("./screens/Decks"));
 const Explore = React.lazy(() => import("./screens/Explore"));
@@ -65,23 +66,21 @@ class App extends Component {
           fallback={
             // FIXME: fix loader
             <LoaderContainer>
-              <Loader
-                type="Puff"
-                height="50"
-                width="50"
-              />
+              <Loader type="Puff" height="50" width="50" />
             </LoaderContainer>
           }
         >
           <ThemeProvider theme={theme}>
-            <Router>
-              <Home path="/" />
-              <Login path="login" />
-              <Signup path="signup" />
-              <Profile path="profile/*" />
-              <Decks path="decks" />
-              <Explore path="explore" />
-            </Router>
+            <Layout>
+              <Router>
+                <Home path="/" />
+                <Login path="login" />
+                <Signup path="signup" />
+                <Profile path="profile/*" />
+                <Decks path="decks" />
+                <Explore path="explore" />
+              </Router>
+            </Layout>
           </ThemeProvider>
         </Suspense>
       </>
