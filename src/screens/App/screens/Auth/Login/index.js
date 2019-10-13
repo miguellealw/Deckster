@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "@reach/router";
 
 import Input from "shared/components/Input";
-import Navigation from "shared/components/Navigation";
 import Button from "shared/components/Button";
 import {
   PageContainer,
@@ -17,14 +16,16 @@ import {
 } from "./components";
 
 const Login = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState({});
 
-  const onChange = e => setValue(e.target.value);
+  const onChange = e =>
+    setValue({
+      ...value,
+      [e.target.name]: e.target.value
+    });
 
   return (
     <PageContainer>
-      <Navigation />
-
       <FormContainer>
         <Title>Login</Title>
 
@@ -37,8 +38,9 @@ const Login = () => {
               <Input
                 type="email"
                 id="email"
+                name="email"
                 onChange={onChange}
-                value={value}
+                value={value.email}
               />
             </InputFieldContainer>
           </InputContainer>
@@ -51,8 +53,9 @@ const Login = () => {
               <Input
                 type="password"
                 id="password"
+                name="password"
                 onChange={onChange}
-                value={value}
+                value={value.password}
               />
             </InputFieldContainer>
           </InputContainer>

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
 
-import Navigation from "shared/components/Navigation";
 import {
   AppContainer,
   Main,
@@ -12,10 +11,9 @@ import {
 
 const Home = () => (
   <AppContainer className="App">
-    <Navigation />
     <Main>
       <PageTitle>
-        <span>Deck</span>ify
+        <span>Deck</span>ster
       </PageTitle>
       <PageSubTitle>Create, Study, and Share Decks of Flashcards</PageSubTitle>
       <Link to="/signup">
