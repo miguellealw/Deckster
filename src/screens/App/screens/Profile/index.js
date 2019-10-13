@@ -3,11 +3,11 @@ import MediaQuery from "react-responsive";
 import { Router } from "@reach/router";
 import { withTheme } from "styled-components";
 
-import SideNavigation from "shared/components/SideNavigation";
 import Navigation from "shared/components/Navigation";
-import DeckSlider from "shared/components/DeckSlider";
+import Deck from "shared/components/Deck";
 import {
-  ProfileContainer,
+  ProfilePage,
+  DeckContainer,
   ContentContainer,
   UserInfo,
   DeckInfo,
@@ -26,37 +26,40 @@ const Profile = ({ theme }) => {
   const handleOpen = () => setOpen(true);
 
   return (
-    <ProfileContainer>
-      <MediaQuery minWidth={theme.breakpoints.tabletLandscapeUp}>
-        {matches => (matches ? <SideNavigation /> : <Navigation />)}
-      </MediaQuery>
-      {/* <MediaQuery minWidth={500}>
-        {matches => (matches ? <SideNavigation /> : <Navigation />)}
-      </MediaQuery> */}
-
+    <ProfilePage>
       <ContentContainer>
-        <UserInfo>
-          <ImageContainer>
-            <img src="https://source.unsplash.com/JBfdCFeRDeQ/200x100" alt="" />
-          </ImageContainer>
-          <Name>John Doe</Name>
-          <Email>johndoe@gmail.com</Email>
-        </UserInfo>
+        <h2>Your Decks</h2>
+        <div className="dropdowns-container">
+          <div className="dropdown">
+            <label htmlFor="order-select">Sort:</label>
+            <select name="pets" id="pet-select">
+              <option value="">Alphabetical (A-Z)</option>
+              <option value="">Reverse Alphabetical (Z-A)</option>
+              <option value="dog">Recently Created</option>
+              <option value="cat">Recently Studied </option>
+            </select>
+          </div>
 
-        <DeckInfo>
-          <Tabs>
-            <li>
-              <NavLink to="my-decks">My Decks</NavLink>
-            </li>
-            <li>
-              <NavLink to="favorited">Favorited</NavLink>
-            </li>
-            <li onClick={handleOpen}>
-              <NavLink to="create-deck">Create Deck</NavLink>
-            </li>
-          </Tabs>
+          <div className="dropdown">
+            <label htmlFor="order-select">Filter:</label>
+            <select name="pets" id="pet-select">
+              <option value="">All</option>
+              <option value="">Math</option>
+              <option value="dog">Computer Science</option>
+            </select>
+          </div>
+        </div>
 
-          <Router>
+        <DeckContainer>
+          <Deck title="test title" />
+          <Deck title="test title" />
+          <Deck title="test title" />
+          <Deck title="test title" />
+          <Deck title="test title" />
+        </DeckContainer>
+      </ContentContainer>
+
+      {/* <Router>
             <DeckSlider path="my-decks" />
             <DeckSlider path="favorited" />
             <CreateDeckModal
@@ -64,10 +67,8 @@ const Profile = ({ theme }) => {
               isOpen={isOpen}
               handleClose={handleClose}
             />
-          </Router>
-        </DeckInfo>
-      </ContentContainer>
-    </ProfileContainer>
+          </Router> */}
+    </ProfilePage>
   );
 };
 

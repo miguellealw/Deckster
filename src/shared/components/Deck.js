@@ -1,17 +1,74 @@
 import React from "react";
 import styled from "styled-components";
 
-const DeckContainer = styled.div`
-  min-width: 25em;
-  height: 16em;
-  position: relative;
-  border-radius: 0.438em;
-  overflow: hidden;
-  margin: 1em;
+const width = 23;
+const height = width - 9;
 
-  background-image: url(${props => props.image});
-  background-size: cover;
-  background-position: center;
+const DeckContainer = styled.div`
+  font-size: 0.8rem;
+  width: ${width}em;
+  height: ${height}em;
+  border-radius: 0.438em;
+  margin: 1em;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  background: white;
+  position: relative;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: 0.2s;
+
+
+  .deckFirstCard {
+    font-size: 1.5rem;
+    color: ${props => props.theme.colors.secondaryGray};
+  }
+
+  &:before,
+  &:after {
+    content: "";
+    height: inherit;
+    border-radius: inherit;
+    box-shadow: inherit;
+    background: white;
+    position: absolute;
+    transition: 0.2s;
+  }
+
+  &:before {
+    min-width: calc(${width}em - 1em);
+    transform: translateY(-0.5rem);
+    z-index: -1;
+  }
+
+  &:after {
+    min-width: calc(${width}em - 2em);
+    transform: translateY(-1rem);
+    z-index: -2;
+  }
+
+  /* Hover Effects */
+  &:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  &:hover:before {
+    transform: translateY(-1rem);
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  &:hover:after {
+    transform: translateY(-2rem);
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  ${({ theme }) => theme.media.tabletLandscapeUp`
+    // grid-template-columns: 0.8fr 5fr;
+    font-size: 1rem;
+  `}
 `;
 
 const DeckInfo = styled.div`
@@ -19,11 +76,11 @@ const DeckInfo = styled.div`
   position: absolute;
   bottom: 0;
   background-color: ${({ theme }) => theme.colors.primaryGray};
-  padding: 1.5em 1em;
+  padding: 1em 1em;
 `;
 
 const DeckTitle = styled.span`
-  /* font-size: 1.4rem; */
+  font-size: 1.1rem;
   font-weight: bold;
 `;
 
@@ -47,20 +104,15 @@ const Tag = styled.span`
 `;
 
 const TagContainer = styled.div`
-  /* margin-top: 1em; */
+  margin-top: .6em;
 `;
 
-const Deck = ({ title, image }) => {
+const Deck = ({ title }) => {
   return (
-    <DeckContainer image={image}>
+    <DeckContainer>
+      <span className="deckFirstCard">Test First Card</span>
       <DeckInfo>
         <DeckTitle>{title}</DeckTitle>
-        <DeckDescription>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-          blanditiis eveniet illo, consectetur commodi vero hic! Minus
-          voluptatibus reprehenderit, quasi dolore nobis atque explicabo.
-          Maiores nostrum modi facere assumenda similique.
-        </DeckDescription>
         <TagContainer>
           <Tag>Math</Tag>
           <Tag>Trigonometry</Tag>

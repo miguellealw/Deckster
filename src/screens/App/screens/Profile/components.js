@@ -5,30 +5,86 @@ import ReactModal from "react-modal";
 
 import FormInput from "shared/components/FormInput";
 import Button from "shared/components/Button";
+import TextArea from "shared/components/TextArea";
 
-export const ProfileContainer = styled.div`
-  display: grid;
-  grid-template-columns: none;
-  grid-template-rows: 1fr auto;
-  /* grid-template-rows: 1fr; */
+export const ProfilePage = styled.div`
+  background: #e6e6e6;
+  width: 100%;
+  min-height: 100vh;
 
   /* 900px up */
   ${({ theme }) => theme.media.tabletLandscapeUp`
-    grid-template-columns: 0.8fr 5fr;
+    // grid-template-columns: 0.8fr 5fr;
   `}
 `;
 
 export const ContentContainer = styled.div`
-  /* width: 100vw; */
-  font-size: 1.3rem;
-
   display: grid;
-  grid-template-rows: 1fr 2fr;
+
+  /* padding: 2em; */
+
+  > h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 2em;
+    margin-left: calc(2em - 3rem);
+    margin-bottom: 1em;
+  }
+
+  .dropdowns-container {
+    display: flex;
+    margin-left: 2em;
+
+    .dropdown {
+      display: flex;
+      flex-direction: column;
+      margin-right: 1.3em;
+
+      label {
+        font-size: .8rem;
+        font-weight: bold;
+        margin-bottom: 0.7em;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+      }
+
+      select {
+        width: 10em;
+        border: none;
+        padding: 0.5em;
+        font-weight: bold;
+      }
+    }
+  }
 
   ${({ theme }) => theme.media.tabletLandscapeUp`
-    grid-template-rows: 0.3fr 1fr;
+    // justify-items: center;
+    width: 90%;
+    margin: 0 auto;
+  `};
+`;
+
+export const DeckContainer = styled.div`
+  /* background: pink; */
+  padding-top: 3em;
+  /* font-size: 1.3rem; */
+
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(auto-fill, minmax(23em, 1fr));
+  justify-items: center;
+
+  /* For pseudo elements of Deck component */
+  position: relative;
+  z-index: 1;
+
+  ${({ theme }) => theme.media.tabletLandscapeUp`
+    width: 100%;
+    // margin: 0 auto;
   `}
 `;
+
+export const Dropdown = styled.div``;
 
 // TODO: check if section element is better
 export const UserInfo = styled.div`
@@ -155,7 +211,7 @@ const FormContainer = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
   position: relative;
   margin: 0 auto;
   /* background: pink; */
@@ -164,7 +220,7 @@ const FormContainer = styled.form`
     font-size: 3em;
     font-weight: bold;
     text-align: center;
-    color: ${props => props.theme.colors.primaryGray}
+    color: ${props => props.theme.colors.primaryGray};
     margin: 1em 0;
   }
 
@@ -181,6 +237,8 @@ const CloseIcon = styled.i`
   right: 0.5em;
   cursor: pointer;
   color: ${props => props.theme.colors.secondaryGray};
+  /* background: red; */
+  /* padding: .3em; */
 
   :hover {
     color: black;
@@ -220,11 +278,12 @@ export const CreateDeckModal = ({ isOpen, handleClose }) => {
           placeholder="World Capitals"
           direction="column"
         />
-        <FormInput
-          label="Description (optional)"
-          placeholder="Deck About the Capitals of the World"
-          direction="column"
-        />
+        <FormInput label="Description (optional)" direction="column">
+          <TextArea
+            rows="4"
+            placeholder="Deck About the Capitals of the World"
+          />
+        </FormInput>
         <FormInput
           label="Tags"
           placeholder="Geography, History"
