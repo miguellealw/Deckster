@@ -18,7 +18,7 @@ const blueStyles = {
 export default () => (
   <Link to="/" style={{ textDecoration: "none" }}>
     <Logo>
-      <span style={blueStyles}>Deck</span>ify
+      <span style={blueStyles}>Deck</span>ster
       <span role="img" aria-label="flashcards">
         📇
       </span>
