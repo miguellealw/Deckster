@@ -1,8 +1,7 @@
 import React, { Component, Suspense } from "react";
-import { createGlobalStyle } from "styled-components";
 import { Router } from "@reach/router";
 import Loader from "react-loader-spinner";
-import styled, { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 
 import theme from "shared/theme";
 import Home from "./screens/Home";
@@ -37,11 +36,11 @@ const GlobalStyle = createGlobalStyle`
     `} */
   }
 
-  a { 
+  a {
     text-decoration: none;
     color: #009dff;
 
-    :hover { 
+    :hover {
       text-decoration: underline;
     }
   }

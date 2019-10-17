@@ -1,29 +1,16 @@
 import React from "react";
-import MediaQuery from "react-responsive";
-import { Router } from "@reach/router";
+// import MediaQuery from "react-responsive";
+// import { Router } from "@reach/router";
 import { withTheme } from "styled-components";
 
-import Navigation from "shared/components/Navigation";
 import Deck from "shared/components/Deck";
-import {
-  ProfilePage,
-  DeckContainer,
-  ContentContainer,
-  UserInfo,
-  DeckInfo,
-  Name,
-  Email,
-  ImageContainer,
-  Tabs,
-  NavLink,
-  CreateDeckModal
-} from "./components";
+import { ProfilePage, DeckContainer, ContentContainer } from "./components";
 
 const Profile = ({ theme }) => {
-  const [isOpen, setOpen] = React.useState(false);
+  // const [isOpen, setOpen] = React.useState(false);
 
-  const handleClose = () => setOpen(false);
-  const handleOpen = () => setOpen(true);
+  // const handleClose = () => setOpen(false);
+  // const handleOpen = () => setOpen(true);
 
   return (
     <ProfilePage>
@@ -51,11 +38,36 @@ const Profile = ({ theme }) => {
         </div>
 
         <DeckContainer>
-          <Deck title="test title" />
-          <Deck title="test title" />
-          <Deck title="test title" />
-          <Deck title="test title" />
-          <Deck title="test title" />
+          <Deck
+            title="test title"
+            firstCardName="test first card"
+            tags={["tag 1", "tag 2", "tag 3", "tag 4", "tag 5"]}
+          />
+          <Deck
+            title="test title"
+            firstCardName="test first card"
+            tags={["tag 1", "tag 2"]}
+          />
+          <Deck
+            title="test title"
+            firstCardName="test first card"
+            tags={["tag 1", "tag 2"]}
+          />
+          <Deck
+            title="test title"
+            firstCardName="test first card"
+            tags={["tag 1", "tag 2"]}
+          />
+          <Deck
+            title="test title"
+            firstCardName="test first card"
+            tags={["tag 1", "tag 2"]}
+          />
+          <Deck
+            title="test title"
+            firstCardName="test first card"
+            tags={["tag 1", "tag 2"]}
+          />
         </DeckContainer>
       </ContentContainer>
 
