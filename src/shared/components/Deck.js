@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const width = 23;
 const height = width - 9;
@@ -20,7 +21,6 @@ const DeckContainer = styled.div`
   align-items: center;
 
   transition: 0.2s;
-
 
   .deckFirstCard {
     font-size: 1.5rem;
@@ -84,17 +84,17 @@ const DeckTitle = styled.span`
   font-weight: bold;
 `;
 
-const DeckDescription = styled.div`
-  font-size: 0.6rem;
-  color: ${({ theme }) => theme.colors.secondaryGray};
-  line-height: 1.3em;
-  margin: 1em 0;
-`;
+// const DeckDescription = styled.div`
+//   font-size: 0.6rem;
+//   color: ${({ theme }) => theme.colors.secondaryGray};
+//   line-height: 1.3em;
+//   margin: 1em 0;
+// `;
 
-const Tag = styled.span`
-  font-size: 0.6rem;
-  width: 1em;
-  height: 0.5em;
+const Tag = styled.li`
+  font-size: 0.7rem;
+  /* min-width: 1em; */
+  /* height: 0.5em; */
   padding: 0.2em 0.5em;
   background: tomato;
   border-radius: 100em;
@@ -103,23 +103,35 @@ const Tag = styled.span`
   cursor: pointer;
 `;
 
-const TagContainer = styled.div`
-  margin-top: .6em;
+const TagContainer = styled.ul`
+  margin-top: 0.6em;
+
+  display: flex;
 `;
 
-const Deck = ({ title }) => {
+const Deck = ({ title, firstCardName, tags }) => {
   return (
     <DeckContainer>
-      <span className="deckFirstCard">Test First Card</span>
+      <span className="deckFirstCard">{firstCardName}</span>
       <DeckInfo>
         <DeckTitle>{title}</DeckTitle>
         <TagContainer>
-          <Tag>Math</Tag>
-          <Tag>Trigonometry</Tag>
+          {/* TODO: change key */}
+          {tags.map((tag, i) => (
+            <Tag key={i} data-testid="tag">
+              {tag}
+            </Tag>
+          ))}
         </TagContainer>
       </DeckInfo>
     </DeckContainer>
   );
+};
+
+Deck.propTypes = {
+  title: PropTypes.string.isRequired,
+  firstCard: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default Deck;
