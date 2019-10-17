@@ -130,7 +130,7 @@ const Deck = ({ title, firstCardName, tags }) => {
 
 Deck.propTypes = {
   title: PropTypes.string.isRequired,
-  firstCard: PropTypes.string.isRequired,
+  firstCardName: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
