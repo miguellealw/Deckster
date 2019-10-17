@@ -1,2 +1,2 @@
-# Deckify
+# Deckster
 📇 Flashcard Application - WIP 👷‍ 

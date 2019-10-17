@@ -1,5 +1,6 @@
 {
-  "name": "deckify-v2",
+  "name": "deckster",
+  "description": "Flashcard Application",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
