@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "@reach/router";
+import React from 'react'
+import styled from 'styled-components'
+import { Link } from '@reach/router'
 
-import Logo from "shared/components/Logo";
+import Logo from 'shared/components/Logo'
 
 const NavContainer = styled.nav`
   /* width: 15em; */
@@ -46,29 +46,29 @@ const NavContainer = styled.nav`
     /* margin-bottom: 2rem; */
     /* font-size: 0.8em; */
   }
-`;
+`
 
 const NavLink = props => (
   <Link
     {...props}
     getProps={({ isCurrent }) => ({
       style: {
-        color: isCurrent ? "default" : "white"
-      }
+        color: isCurrent ? 'default' : 'white',
+      },
     })}
   />
-);
+)
 
 const PartialNavLink = props => (
   <Link
     {...props}
     getProps={({ isPartiallyCurrent }) => ({
       style: {
-        color: isPartiallyCurrent ? "default" : "white"
-      }
+        color: isPartiallyCurrent ? 'default' : 'white',
+      },
     })}
   />
-);
+)
 
 const SideNavigation = () => {
   return (
@@ -87,7 +87,7 @@ const SideNavigation = () => {
       </ul>
       <NavLink to="/">Log Out</NavLink>
     </NavContainer>
-  );
-};
+  )
+}
 
-export default SideNavigation;
+export default SideNavigation

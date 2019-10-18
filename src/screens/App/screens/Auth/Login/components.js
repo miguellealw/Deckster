@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const PageContainer = styled.div`
   width: 100vw;
-`;
+`
 
 export const FormContainer = styled.div`
   width: 100vw;
@@ -14,15 +14,15 @@ export const FormContainer = styled.div`
   margin-top: -3.5rem;
 
   ${({ theme }) => theme.media.phoneOnly`font-size: .8em;`}
-`;
+`
 
 export const Title = styled.h2`
-  font-family: "Nunito";
+  font-family: 'Nunito';
   font-weight: bold;
   font-size: 2.3em;
   text-align: center;
   margin-bottom: 3rem;
-`;
+`
 
 export const Form = styled.form`
   display: flex;
@@ -34,7 +34,7 @@ export const Form = styled.form`
   margin: 0 auto;
 
   /* background: pink; */
-`;
+`
 
 export const LabelContainer = styled.div`
   font-size: 0.8em;
@@ -51,7 +51,7 @@ export const LabelContainer = styled.div`
   }
 
   ${({ theme }) => theme.media.phoneOnly`width: 100%;`}
-`;
+`
 
 export const InputContainer = styled.div`
   width: 100%;
@@ -71,7 +71,7 @@ export const InputContainer = styled.div`
       margin-bottom: 0.8rem;
     }
   `}
-`;
+`
 
 export const InputFieldContainer = styled.div`
   flex: 4;
@@ -80,14 +80,14 @@ export const InputFieldContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 export const SignupMessage = styled.span`
   /* background: red; */
   font-size: 0.8em;
   margin-top: -1rem;
   align-self: flex-end;
-`;
+`
 
 export const ButtonContainer = styled.div`
   width: 100%;
@@ -95,4 +95,4 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
+`

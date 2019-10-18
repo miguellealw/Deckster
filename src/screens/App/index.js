@@ -1,16 +1,16 @@
-import React, { Component, Suspense } from "react";
-import { Router } from "@reach/router";
-import Loader from "react-loader-spinner";
-import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
+import React, { Component, Suspense } from 'react'
+import { Router } from '@reach/router'
+import Loader from 'react-loader-spinner'
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 
-import theme from "shared/theme";
-import Home from "./screens/Home";
-import Layout from "shared/components/Layout";
-const Profile = React.lazy(() => import("./screens/Profile"));
-const Decks = React.lazy(() => import("./screens/Decks"));
-const Explore = React.lazy(() => import("./screens/Explore"));
-const Login = React.lazy(() => import("./screens/Auth/Login"));
-const Signup = React.lazy(() => import("./screens/Auth/Signup"));
+import theme from 'shared/theme'
+import Home from './screens/Home'
+import Layout from 'shared/components/Layout'
+const Profile = React.lazy(() => import('./screens/Profile'))
+const Decks = React.lazy(() => import('./screens/Decks'))
+const Explore = React.lazy(() => import('./screens/Explore'))
+const Login = React.lazy(() => import('./screens/Auth/Login'))
+const Signup = React.lazy(() => import('./screens/Auth/Signup'))
 
 const GlobalStyle = createGlobalStyle`
   /* html {
@@ -44,7 +44,7 @@ const GlobalStyle = createGlobalStyle`
       text-decoration: underline;
     }
   }
-`;
+`
 
 const LoaderContainer = styled.div`
   width: 100%;
@@ -54,7 +54,7 @@ const LoaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 class App extends Component {
   render() {
@@ -73,18 +73,18 @@ class App extends Component {
             <Layout>
               <Router>
                 <Home path="/" />
-                <Login path="login" />
-                <Signup path="signup" />
-                <Profile path="profile/*" />
-                <Decks path="decks" />
-                <Explore path="explore" />
+                <Login path="/login" />
+                <Signup path="/signup" />
+                <Profile path="/profile/*" />
+                <Decks path="/decks" />
+                <Explore path="/explore" />
               </Router>
             </Layout>
           </ThemeProvider>
         </Suspense>
       </>
-    );
+    )
   }
 }
 
-export default App;
+export default App

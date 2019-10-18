@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 
-import Navigation from "shared/components/Navigation";
-import Footer from "shared/components/Footer";
+import Navigation from 'shared/components/Navigation'
+import Footer from 'shared/components/Footer'
 
 const Layout = props => (
   <div>
@@ -9,6 +9,6 @@ const Layout = props => (
     {props.children}
     <Footer />
   </div>
-);
+)
 
-export default Layout;
+export default Layout

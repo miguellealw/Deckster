@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Link } from "@reach/router";
-import styled, { withTheme } from "styled-components";
-import MediaQuery from "react-responsive";
+import React, { useState } from 'react'
+import { Link } from '@reach/router'
+import styled, { withTheme } from 'styled-components'
+import MediaQuery from 'react-responsive'
 
-import Logo from "shared/components/Logo";
+import Logo from 'shared/components/Logo'
 
 const NavigationContainer = styled.nav`
   display: flex;
@@ -19,12 +19,12 @@ const NavigationContainer = styled.nav`
   width: 100%;
 
   /* ${({ theme: { media } }) => media.desktopUp`background: dodgerblue;`} */
-`;
+`
 
 const ulStyles = {
-  listStyle: "none",
-  margin: 0
-};
+  listStyle: 'none',
+  margin: 0,
+}
 
 const NavButton = styled.button`
   margin: 0;
@@ -41,7 +41,7 @@ const NavButton = styled.button`
     border: 2px solid #0063ff;
     background: ${({ theme }) => theme.colors.gradient};
   }
-`;
+`
 
 /* background: red; */
 const ButtonContainer = styled.ul`
@@ -49,7 +49,7 @@ const ButtonContainer = styled.ul`
     display: inline-block;
     margin-left: 1rem;
   }
-`;
+`
 
 const NavIcon = styled.div`
   width: 1.3rem;
@@ -63,7 +63,7 @@ const NavIcon = styled.div`
 
   &::after,
   &::before {
-    content: "";
+    content: '';
     width: 100%;
     height: 0.1rem;
     background: white;
@@ -78,7 +78,7 @@ const NavIcon = styled.div`
     position: absolute;
     bottom: 0;
   }
-`;
+`
 
 const DropdownContainer = styled.ul`
   font-size: 0.8rem;
@@ -104,7 +104,7 @@ const DropdownContainer = styled.ul`
       background: ${({ theme }) => theme.colors.gradients};
     }
   }
-`;
+`
 
 const Dropdown = () => (
   <DropdownContainer>
@@ -118,10 +118,10 @@ const Dropdown = () => (
       <li>Signup</li>
     </Link>
   </DropdownContainer>
-);
+)
 
 const Navigation = ({ theme }) => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false)
 
   return (
     <NavigationContainer>
@@ -156,7 +156,7 @@ const Navigation = ({ theme }) => {
         {isOpen && <Dropdown />}
       </MediaQuery>
     </NavigationContainer>
-  );
-};
+  )
+}
 
-export default React.memo(withTheme(Navigation));
+export default React.memo(withTheme(Navigation))

@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import getImage from "shared/utils/getImage";
+import React from 'react'
+import styled from 'styled-components'
+import getImage from 'shared/utils/getImage'
 
-import Deck from "./Deck";
+import Deck from './Deck'
 
 const DeckSliderContainer = styled.div`
   min-width: 75vw;
@@ -19,7 +19,7 @@ const DeckSliderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const DecksContainer = styled.div`
   position: absolute;
@@ -30,19 +30,19 @@ const DecksContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const CardSlider = () => {
   return (
     <DeckSliderContainer>
       <DecksContainer>
-        <Deck title={"trig identities"} image={getImage()} />
-        <Deck title={"Periodic table"} image={getImage()} />
-        <Deck title={"american states"} image={getImage()} />
-        <Deck title={"State Capitals"} image={getImage()} />
+        <Deck title={'trig identities'} image={getImage()} />
+        <Deck title={'Periodic table'} image={getImage()} />
+        <Deck title={'american states'} image={getImage()} />
+        <Deck title={'State Capitals'} image={getImage()} />
       </DecksContainer>
     </DeckSliderContainer>
-  );
-};
+  )
+}
 
-export default CardSlider;
+export default CardSlider

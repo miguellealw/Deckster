@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import PropTypes from "prop-types";
+import React from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
-const width = 23;
-const height = width - 9;
+const width = 23
+const height = width - 9
 
 const DeckContainer = styled.div`
   font-size: 0.8rem;
@@ -29,7 +29,7 @@ const DeckContainer = styled.div`
 
   &:before,
   &:after {
-    content: "";
+    content: '';
     height: inherit;
     border-radius: inherit;
     box-shadow: inherit;
@@ -69,7 +69,7 @@ const DeckContainer = styled.div`
     // grid-template-columns: 0.8fr 5fr;
     font-size: 1rem;
   `}
-`;
+`
 
 const DeckInfo = styled.div`
   width: 100%;
@@ -77,12 +77,12 @@ const DeckInfo = styled.div`
   bottom: 0;
   background-color: ${({ theme }) => theme.colors.primaryGray};
   padding: 1em 1em;
-`;
+`
 
 const DeckTitle = styled.span`
   font-size: 1.1rem;
   font-weight: bold;
-`;
+`
 
 // const DeckDescription = styled.div`
 //   font-size: 0.6rem;
@@ -101,13 +101,13 @@ const Tag = styled.li`
   margin-right: 0.5em;
   color: white;
   cursor: pointer;
-`;
+`
 
 const TagContainer = styled.ul`
   margin-top: 0.6em;
 
   display: flex;
-`;
+`
 
 const Deck = ({ title, firstCardName, tags }) => {
   return (
@@ -125,13 +125,13 @@ const Deck = ({ title, firstCardName, tags }) => {
         </TagContainer>
       </DeckInfo>
     </DeckContainer>
-  );
-};
+  )
+}
 
 Deck.propTypes = {
   title: PropTypes.string.isRequired,
   firstCardName: PropTypes.string.isRequired,
-  tags: PropTypes.arrayOf(PropTypes.string).isRequired
-};
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+}
 
-export default Deck;
+export default Deck

@@ -1,13 +1,15 @@
-// import React from "react";
 import styled from 'styled-components'
+// import Input from './Input'
 
-export default styled.input`
+export default styled.textarea`
   font-size: 1em;
-  width: 20em;
+  max-width: 20em;
+  min-width: 20em;
+  max-height: 10em;
   /* width: 100%; */
   padding: 0.8em 0;
   text-indent: 1em;
-  border-radius: 100em;
+  border-radius: 0.625em;
   border: none;
   background-color: ${props =>
     props.background ? props.background : '#f4f4f4'};

@@ -1,18 +1,18 @@
-import React from "react";
-import { Link } from "@reach/router";
+import React from 'react'
+import { Link } from '@reach/router'
 
 import {
   AppContainer,
   Main,
   PageTitle,
   PageSubTitle,
-  StartNowButton
-} from "./components";
+  StartNowButton,
+} from './components'
 
 const Home = () => (
   <AppContainer className="App">
     <Main>
-      <PageTitle>
+      <PageTitle data-testid="home-page-title">
         <span>Deck</span>ster
       </PageTitle>
       <PageSubTitle>Create, Study, and Share Decks of Flashcards</PageSubTitle>
@@ -22,6 +22,6 @@ const Home = () => (
       </Link>
     </Main>
   </AppContainer>
-);
+)
 
-export default Home;
+export default Home

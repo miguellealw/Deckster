@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 // import { Link } from "@reach/router";
-import ReactModal from "react-modal";
+import ReactModal from 'react-modal'
 
-import FormInput from "shared/components/FormInput";
-import Button from "shared/components/Button";
-import TextArea from "shared/components/TextArea";
+import FormInput from 'shared/components/FormInput'
+import Button from 'shared/components/Button'
+import TextArea from 'shared/components/TextArea'
 
 export const ProfilePage = styled.div`
   background: #e6e6e6;
@@ -17,7 +17,7 @@ export const ProfilePage = styled.div`
   ${({ theme }) => theme.media.tabletLandscapeUp`
     // grid-template-columns: 0.8fr 5fr;
   `}
-`;
+`
 
 export const ContentContainer = styled.div`
   display: grid;
@@ -42,7 +42,7 @@ export const ContentContainer = styled.div`
       margin-right: 1.3em;
 
       label {
-        font-size: .8rem;
+        font-size: 0.8rem;
         font-weight: bold;
         margin-bottom: 0.7em;
         text-transform: uppercase;
@@ -63,7 +63,7 @@ export const ContentContainer = styled.div`
     width: 90%;
     margin: 0 auto;
   `};
-`;
+`
 
 export const DeckContainer = styled.div`
   /* background: pink; */
@@ -83,9 +83,9 @@ export const DeckContainer = styled.div`
     width: 100%;
     // margin: 0 auto;
   `}
-`;
+`
 
-export const Dropdown = styled.div``;
+export const Dropdown = styled.div``
 
 // TODO: check if section element is better
 // export const UserInfo = styled.div`
@@ -229,7 +229,7 @@ const FormContainer = styled.form`
     font-size: .6em;
     // width: 20em;
   `}
-`;
+`
 
 const CloseIcon = styled.i`
   font-size: 2em;
@@ -251,7 +251,7 @@ const CloseIcon = styled.i`
     top: .8em;
     right: 1em;
   `}
-`;
+`
 
 export const CreateDeckModal = ({ isOpen, handleClose }) => {
   return (
@@ -260,15 +260,15 @@ export const CreateDeckModal = ({ isOpen, handleClose }) => {
       contentLabel="Create Deck Form"
       style={{
         content: {
-          minWidth: "2em",
-          maxWidth: "35em",
-          margin: "0 auto",
-          borderRadius: "1em"
+          minWidth: '2em',
+          maxWidth: '35em',
+          margin: '0 auto',
+          borderRadius: '1em',
         },
         overlay: {
-          background: "rgba(0,0,0,.6)",
-          zIndex: "10"
-        }
+          background: 'rgba(0,0,0,.6)',
+          zIndex: '10',
+        },
       }}
     >
       <CloseIcon className="icon ion-md-close" onClick={handleClose} />
@@ -293,5 +293,5 @@ export const CreateDeckModal = ({ isOpen, handleClose }) => {
         <Button>Create Deck</Button>
       </FormContainer>
     </ReactModal>
-  );
-};
+  )
+}

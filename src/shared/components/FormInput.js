@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import Input from "shared/components/Input";
+import React from 'react'
+import styled from 'styled-components'
+import Input from 'shared/components/Input'
 
 export const InputContainer = styled.div.attrs(({ direction }) => ({
-  flexDirection: direction || "row"
+  flexDirection: direction || 'row',
 }))`
   /* width: 100%; */
   /* background-color: cyan; */
@@ -23,7 +23,7 @@ export const InputContainer = styled.div.attrs(({ direction }) => ({
       margin-bottom: 0.8em;
     }
   `}
-`;
+`
 
 export const LabelContainer = styled.div`
   font-size: 0.8em;
@@ -31,8 +31,8 @@ export const LabelContainer = styled.div`
   /* background: tomato; */
 
   display: flex;
-  justify-content: ${props => (props.direction ? "flex-start" : "flex-end")};
-  margin-bottom: ${props => (props.direction ? ".5em" : "none")};
+  justify-content: ${props => (props.direction ? 'flex-start' : 'flex-end')};
+  margin-bottom: ${props => (props.direction ? '.5em' : 'none')};
 
   width: 100%;
   label {
@@ -40,7 +40,7 @@ export const LabelContainer = styled.div`
     margin-right: 1em;
   }
   ${({ theme }) => theme.media.phoneOnly`width: 100%;`}
-`;
+`
 
 export const InputFieldContainer = styled.div`
   flex: 4;
@@ -49,15 +49,18 @@ export const InputFieldContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const FormInput = ({
   label,
-  type = "text",
+  type = 'text',
   placeholder,
   onChange,
   value,
-  direction
+  direction,
+  textarea = undefined,
+  render,
+  children,
 }) => {
   return (
     <InputContainer direction={direction}>
@@ -65,17 +68,19 @@ const FormInput = ({
         <label htmlFor={label.toLowerCase()}>{label}:</label>
       </LabelContainer>
       <InputFieldContainer>
-        {/* TODO: remove spaces from label when making it id  */}
-        <Input
-          type={type}
-          id={label.toLowerCase()}
-          onChange={onChange}
-          value={value}
-          placeholder={placeholder}
-        />
+        {children || (
+          /* TODO: remove spaces from label when making it id  */
+          <Input
+            type={type}
+            id={label.toLowerCase()}
+            onChange={onChange}
+            value={value}
+            placeholder={placeholder}
+          />
+        )}
       </InputFieldContainer>
     </InputContainer>
-  );
-};
+  )
+}
 
-export default FormInput;
+export default FormInput

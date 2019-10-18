@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Link } from "@reach/router";
+import React, { useState } from 'react'
+import { Link } from '@reach/router'
 
-import Input from "shared/components/Input";
-import Button from "shared/components/Button";
+import Input from 'shared/components/Input'
+import Button from 'shared/components/Button'
 import {
   PageContainer,
   FormContainer,
@@ -12,21 +12,21 @@ import {
   InputContainer,
   InputFieldContainer,
   SignupMessage,
-  ButtonContainer
-} from "./components";
+  ButtonContainer,
+} from './components'
 
 const Login = () => {
-  const [value, setValue] = useState({});
+  const [value, setValue] = useState({})
   const onChange = e =>
     setValue({
       ...value,
-      [e.target.name]: e.target.value
-    });
+      [e.target.name]: e.target.value,
+    })
 
   return (
     <PageContainer>
       <FormContainer>
-        <Title>Sign Up</Title>
+        <Title data-testid="signup-page-title">Sign Up</Title>
 
         <Form>
           <InputContainer>
@@ -97,7 +97,7 @@ const Login = () => {
         </Form>
       </FormContainer>
     </PageContainer>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

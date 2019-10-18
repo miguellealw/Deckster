@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 // import MediaQuery from "react-responsive";
 // import { Router } from "@reach/router";
-import { withTheme } from "styled-components";
+import { withTheme } from 'styled-components'
 
-import Deck from "shared/components/Deck";
-import { ProfilePage, DeckContainer, ContentContainer } from "./components";
+import Deck from 'shared/components/Deck'
+import { ProfilePage, DeckContainer, ContentContainer } from './components'
 
 const Profile = ({ theme }) => {
   // const [isOpen, setOpen] = React.useState(false);
@@ -41,32 +41,32 @@ const Profile = ({ theme }) => {
           <Deck
             title="test title"
             firstCardName="test first card"
-            tags={["tag 1", "tag 2", "tag 3", "tag 4", "tag 5"]}
+            tags={['tag 1', 'tag 2', 'tag 3', 'tag 4', 'tag 5']}
           />
           <Deck
             title="test title"
             firstCardName="test first card"
-            tags={["tag 1", "tag 2"]}
+            tags={['tag 1', 'tag 2']}
           />
           <Deck
             title="test title"
             firstCardName="test first card"
-            tags={["tag 1", "tag 2"]}
+            tags={['tag 1', 'tag 2']}
           />
           <Deck
             title="test title"
             firstCardName="test first card"
-            tags={["tag 1", "tag 2"]}
+            tags={['tag 1', 'tag 2']}
           />
           <Deck
             title="test title"
             firstCardName="test first card"
-            tags={["tag 1", "tag 2"]}
+            tags={['tag 1', 'tag 2']}
           />
           <Deck
             title="test title"
             firstCardName="test first card"
-            tags={["tag 1", "tag 2"]}
+            tags={['tag 1', 'tag 2']}
           />
         </DeckContainer>
       </ContentContainer>
@@ -81,7 +81,7 @@ const Profile = ({ theme }) => {
             />
           </Router> */}
     </ProfilePage>
-  );
-};
+  )
+}
 
-export default withTheme(Profile);
+export default withTheme(Profile)
