@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from '@reach/router'
 import styled, { withTheme } from 'styled-components'
-import MediaQuery from 'react-responsive'
+
+import { PhoneOnly, TabletPortraitUp } from './Responsive'
 
 import Logo from 'shared/components/Logo'
 
@@ -124,10 +125,11 @@ const Navigation = ({ theme }) => {
   const [isOpen, setOpen] = useState(false)
 
   return (
-    <NavigationContainer>
+    <NavigationContainer data-testid="navigation">
       <Logo />
+
       <ButtonContainer style={ulStyles}>
-        <MediaQuery minWidth={theme.breakpoints.tabletPortraitUp}>
+        <TabletPortraitUp>
           <li>
             <Link to="/profile/my-decks">
               <NavButton>Profile</NavButton>
@@ -143,18 +145,17 @@ const Navigation = ({ theme }) => {
               <NavButton>Sign Up</NavButton>
             </Link>
           </li>
-        </MediaQuery>
+        </TabletPortraitUp>
 
         {/* Nav Icon */}
-        <MediaQuery maxWidth={theme.breakpoints.phoneOnly}>
+        <PhoneOnly>
           <li>
             <NavIcon aria-label="menu" onClick={() => setOpen(!isOpen)} />
           </li>
-        </MediaQuery>
+        </PhoneOnly>
       </ButtonContainer>
-      <MediaQuery maxWidth={theme.breakpoints.phoneOnly}>
-        {isOpen && <Dropdown />}
-      </MediaQuery>
+
+      <PhoneOnly>{isOpen && <Dropdown />}</PhoneOnly>
     </NavigationContainer>
   )
 }
