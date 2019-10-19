@@ -2,7 +2,6 @@ import React from 'react'
 
 // RTL
 import { render, cleanup } from 'utils/test-utils'
-// import '@testing-library/jest-dom/extend-expect'
 
 // Component
 import Deck from '../Deck'
