@@ -108,7 +108,7 @@ const DropdownContainer = styled.ul`
 `
 
 const Dropdown = () => (
-  <DropdownContainer>
+  <DropdownContainer data-testid="menu-dropdown">
     <Link to="/profile/my-decks">
       <li>Profile</li>
     </Link>
