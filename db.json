@@ -1,0 +1,60 @@
+{
+  "decks": [
+    {
+      "id": 1,
+      "title": "Calculus Terms",
+      "tags": [
+        "math",
+        "calculus"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Physics Terms",
+      "tags": [
+        "physics",
+        "classical physics"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Trig Identities",
+      "tags": [
+        "math",
+        "trigonometry"
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "front": "Derivative",
+      "back": "Slope of a tangent line",
+      "deckId": 1
+    },
+    {
+      "id": 2,
+      "front": "Integral",
+      "back": "Area of under a curve",
+      "deckId": 1
+    },
+    {
+      "id": 3,
+      "front": "Kinematics",
+      "back": "Study of the 'how' of motion",
+      "deckId": 2
+    },
+    {
+      "id": 4,
+      "front": "Dynamics",
+      "back": "Study of the 'why' of motion",
+      "deckId": 2
+    },
+    {
+      "id": 5,
+      "front": "Pythagorean Identity",
+      "back": "* some identity image",
+      "deckId": 3
+    }
+  ]
+}

@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@reach/router": "^1.2.1",
+    "axios": "^0.19.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
@@ -22,7 +23,8 @@
     "eject": "react-scripts eject",
     "format": "prettier --write \"**/*.+(js|json|css|md|mdx|html)\"",
     "lint": "eslint . --cache-location node_modules/.cache/eslint",
-    "validate": "npm-run-all --parallel format lint"
+    "validate": "npm-run-all --parallel format lint",
+    "serve:json": "npx json-server db.json -w -p 3001"
   },
   "husky": {
     "hooks": {
