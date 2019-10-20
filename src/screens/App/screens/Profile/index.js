@@ -3,14 +3,15 @@ import React from 'react'
 // import { Router } from "@reach/router";
 import { withTheme } from 'styled-components/macro'
 
+// Shared Components
 import Deck from 'shared/components/Deck'
-import {
-  ProfilePage,
-  DeckContainer,
-  ContentContainer,
-} from './components'
-
 import Dropdown from 'shared/components/Dropdown'
+
+// Page Components
+import ProfilePage from './ProfilePage'
+import DeckContainer from './DeckContainer'
+import Container from './Container'
+
 
 const Profile = ({ theme }) => {
   // const [isOpen, setOpen] = React.useState(false);
@@ -20,7 +21,7 @@ const Profile = ({ theme }) => {
 
   return (
     <ProfilePage>
-      <ContentContainer>
+      <Container>
         <h2
           css={{
             fontSize: '2.5rem',
@@ -99,7 +100,7 @@ const Profile = ({ theme }) => {
             tags={['tag 1', 'tag 2']}
           />
         </DeckContainer>
-      </ContentContainer>
+      </Container>
 
       {/* <Router>
             <DeckSlider path="my-decks" />
