@@ -1,19 +1,16 @@
 import React, { useState } from 'react'
+import 'styled-components/macro'
 import { Link } from '@reach/router'
 
-import Input from 'shared/components/Input'
 import Button from 'shared/components/Button'
-import {
-  PageContainer,
-  FormContainer,
-  Title,
-  Form,
-  LabelContainer,
-  InputContainer,
-  InputFieldContainer,
-  SignupMessage,
-  ButtonContainer,
-} from './components'
+
+import ButtonContainer from '../ButtonContainer'
+import Form from '../Form'
+import FormContainer from '../FormContainer'
+
+import Field from 'shared/components/FormFields/Field'
+import InputLabel from 'shared/components/FormFields/InputLabel'
+import TextField from 'shared/components/FormFields/TextField'
 
 const Login = () => {
   const [value, setValue] = useState({})
@@ -25,50 +22,61 @@ const Login = () => {
     })
 
   return (
-    <PageContainer>
+    // TODO: Extract PageContainer to Page component and put it in Layout comp (change color depending on auth status)
+    <div css={{ width: '100%' }}>
       <FormContainer>
-        <Title data-testid="login-page-title">Login</Title>
+        <h2
+          data-testid="login-page-title"
+          css={{
+            fontFamily: 'Nunito',
+            fontWeight: 'bold',
+            fontSize: '2.3em',
+            textAlign: 'center',
+            marginBottom: '3rem',
+          }}
+        >
+          Login
+        </h2>
 
         <Form>
-          <InputContainer>
-            <LabelContainer>
-              <label htmlFor="email">Email:</label>
-            </LabelContainer>
-            <InputFieldContainer>
-              <Input
-                type="email"
-                id="email"
-                name="email"
-                onChange={onChange}
-                value={value.email}
-              />
-            </InputFieldContainer>
-          </InputContainer>
+          <Field>
+            <InputLabel htmlFor="email">Email:</InputLabel>
+            <TextField
+              type="email"
+              id="email"
+              name="email"
+              placeholder="jondoe@gmail.com"
+              onChange={onChange}
+              value={value.email}
+            ></TextField>
+          </Field>
 
-          <InputContainer>
-            <LabelContainer>
-              <label htmlFor="password">Password:</label>
-            </LabelContainer>
-            <InputFieldContainer>
-              <Input
-                type="password"
-                id="password"
-                name="password"
-                onChange={onChange}
-                value={value.password}
-              />
-            </InputFieldContainer>
-          </InputContainer>
+          <Field>
+            <InputLabel htmlFor="password">Password:</InputLabel>
+            <TextField
+              type="password"
+              id="password"
+              name="password"
+              onChange={onChange}
+              value={value.password}
+            ></TextField>
+          </Field>
 
           <ButtonContainer>
-            <SignupMessage>
+            <span
+              css={{
+                fontSize: '0.8em',
+                marginTop: '-1rem',
+                alignSelf: 'flex-end',
+              }}
+            >
               Don't Have an Account? <Link to="/signup">Sign Up</Link>
-            </SignupMessage>
+            </span>
             <Button>Login</Button>
           </ButtonContainer>
         </Form>
       </FormContainer>
-    </PageContainer>
+    </div>
   )
 }
 

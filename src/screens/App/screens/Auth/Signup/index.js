@@ -1,19 +1,16 @@
 import React, { useState } from 'react'
 import { Link } from '@reach/router'
+import { withTheme } from 'styled-components/macro'
 
-import Input from 'shared/components/Input'
 import Button from 'shared/components/Button'
-import {
-  PageContainer,
-  FormContainer,
-  Title,
-  Form,
-  LabelContainer,
-  InputContainer,
-  InputFieldContainer,
-  SignupMessage,
-  ButtonContainer,
-} from './components'
+
+import ButtonContainer from '../ButtonContainer'
+import Form from '../Form'
+import FormContainer from '../FormContainer'
+
+import Field from 'shared/components/FormFields/Field'
+import InputLabel from 'shared/components/FormFields/InputLabel'
+import TextField from 'shared/components/FormFields/TextField'
 
 const Login = () => {
   const [value, setValue] = useState({})
@@ -24,80 +21,104 @@ const Login = () => {
     })
 
   return (
-    <PageContainer>
+    <div css={{ width: '100%' }}>
       <FormContainer>
-        <Title data-testid="signup-page-title">Sign Up</Title>
+        <h2
+          data-testid="signup-page-title"
+          css={{
+            fontFamily: 'Nunito',
+            fontWeight: 'bold',
+            fontSize: '2.3em',
+            textAlign: 'center',
+            marginBottom: '3rem',
+          }}
+        >
+          Sign Up
+        </h2>
 
         <Form>
-          <InputContainer>
-            <LabelContainer>
-              <label htmlFor="email">Email:</label>
-            </LabelContainer>
-            <InputFieldContainer>
-              <Input
-                type="email"
-                id="email"
-                name="email"
-                onChange={onChange}
-                value={value.email}
-              />
-            </InputFieldContainer>
-          </InputContainer>
-          <InputContainer>
-            <LabelContainer>
-              <label htmlFor="name">Name:</label>
-            </LabelContainer>
-            <InputFieldContainer>
-              <Input
-                type="text"
-                id="name"
-                name="name"
-                onChange={onChange}
-                value={value.name}
-              />
-            </InputFieldContainer>
-          </InputContainer>
+          {/* Email */}
+          <Field>
+            <InputLabel htmlFor="email">Email:</InputLabel>
+            <TextField
+              type="email"
+              id="email"
+              name="email"
+              placeholder="jondoe@gmail.com"
+              onChange={onChange}
+              value={value.email}
+            ></TextField>
+          </Field>
 
-          <InputContainer>
-            <LabelContainer>
-              <label htmlFor="password">Password:</label>
-            </LabelContainer>
-            <InputFieldContainer>
-              <Input
-                type="password"
-                name="password"
-                id="password"
-                onChange={onChange}
-                value={value.password}
-              />
-            </InputFieldContainer>
-          </InputContainer>
+          {/* Name */}
+          <Field>
+            <InputLabel htmlFor="name">Name:</InputLabel>
+            <TextField
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Jon Doe"
+              onChange={onChange}
+              value={value.name}
+            ></TextField>
+          </Field>
 
-          <InputContainer>
-            <LabelContainer>
-              <label htmlFor="confirmPassword">Retype Password:</label>
-            </LabelContainer>
-            <InputFieldContainer>
-              <Input
-                type="password"
-                name="confirmPassword"
-                id="password"
-                onChange={onChange}
-                value={value.confirmPassword}
-              />
-            </InputFieldContainer>
-          </InputContainer>
+          {/* Passowrd */}
+          <Field>
+            <InputLabel htmlFor="password">Password:</InputLabel>
+            <TextField
+              type="password"
+              name="password"
+              id="password"
+              onChange={onChange}
+              value={value.password}
+            ></TextField>
+          </Field>
+
+          {/* Confirm Password */}
+          <Field
+            css={{
+              textAlign: 'right',
+            }}
+          >
+            <InputLabel
+              htmlFor="password"
+              css={`
+                ${({ theme }) => theme.media.phoneOnly`
+                  text-align: left;
+                  width: 100%;
+                  margin-right: auto;
+                  margin-bottom: 0.8rem;
+                `};
+              `}
+            >
+              Confirm Password:
+            </InputLabel>
+            <TextField
+              type="password"
+              name="confirmPassword"
+              id="password"
+              onChange={onChange}
+              value={value.confirmPassword}
+            ></TextField>
+          </Field>
 
           <ButtonContainer>
-            <SignupMessage>
+            <span
+              css={{
+                fontSize: '0.8em',
+                marginTop: '-1rem',
+                alignSelf: 'flex-end',
+              }}
+            >
               Already Have an Account? <Link to="/login">Login</Link>
-            </SignupMessage>
+            </span>
             <Button>Sign Up</Button>
           </ButtonContainer>
         </Form>
       </FormContainer>
-    </PageContainer>
+    </div>
   )
 }
 
-export default Login
+export default withTheme(Login)
