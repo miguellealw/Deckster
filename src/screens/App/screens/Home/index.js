@@ -1,13 +1,12 @@
 import React from 'react'
 import { Link } from '@reach/router'
 
-import {
-  AppContainer,
-  Main,
-  PageTitle,
-  PageSubTitle,
-  StartNowButton,
-} from './components'
+// Components
+import StartNowButton from 'shared/components/Button'
+import AppContainer from './AppContainer'
+import Main from './Main'
+import PageSubTitle from './PageSubTitle'
+import PageTitle from './PageTitle.js'
 
 const Home = () => (
   <AppContainer className="App">
