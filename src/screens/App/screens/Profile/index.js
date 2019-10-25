@@ -6,12 +6,11 @@ import { withTheme } from 'styled-components/macro'
 // Shared Components
 import Deck from 'shared/components/Deck'
 import Dropdown from 'shared/components/Dropdown'
+import IsolatedContainer from 'shared/components/IsolatedContainer'
 
 // Page Components
 import ProfilePage from './ProfilePage'
-import DeckContainer from './DeckContainer'
-import Container from './Container'
-
+import DeckList from './DeckList'
 
 const Profile = ({ theme }) => {
   // const [isOpen, setOpen] = React.useState(false);
@@ -21,7 +20,16 @@ const Profile = ({ theme }) => {
 
   return (
     <ProfilePage>
-      <Container>
+      <IsolatedContainer
+        css={`
+          display: grid;
+
+          ${({ theme }) => theme.media.tabletLandscapeUp`
+            width: 90%;
+            margin: 0 auto;
+          `};
+        `}
+      >
         <h2
           css={{
             fontSize: '2.5rem',
@@ -59,16 +67,14 @@ const Profile = ({ theme }) => {
 
           <Dropdown label="Filter">
             <Dropdown.Item value="All">All</Dropdown.Item>
-            <Dropdown.Item value="Math">
-              Math
-            </Dropdown.Item>
+            <Dropdown.Item value="Math">Math</Dropdown.Item>
             <Dropdown.Item value="Computer Science">
               Computer Science
             </Dropdown.Item>
           </Dropdown>
         </div>
 
-        <DeckContainer>
+        <DeckList>
           <Deck
             title="test title"
             firstCardName="test first card"
@@ -99,8 +105,8 @@ const Profile = ({ theme }) => {
             firstCardName="test first card"
             tags={['tag 1', 'tag 2']}
           />
-        </DeckContainer>
-      </Container>
+        </DeckList>
+      </IsolatedContainer>
 
       {/* <Router>
             <DeckSlider path="my-decks" />

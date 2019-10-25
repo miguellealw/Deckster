@@ -3,13 +3,14 @@ import { Link } from '@reach/router'
 
 // Components
 import StartNowButton from 'shared/components/Button'
-import AppContainer from './AppContainer'
 import Main from './Main'
 import PageSubTitle from './PageSubTitle'
 import PageTitle from './PageTitle.js'
 
+import IsolatedContainer from 'shared/components/IsolatedContainer'
+
 const Home = () => (
-  <AppContainer className="App">
+  <IsolatedContainer className="App">
     <Main>
       <PageTitle data-testid="home-page-title">
         <span>Deck</span>ster
@@ -20,7 +21,7 @@ const Home = () => (
         <StartNowButton>Start Now</StartNowButton>
       </Link>
     </Main>
-  </AppContainer>
+  </IsolatedContainer>
 )
 
 export default Home
