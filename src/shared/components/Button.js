@@ -10,5 +10,6 @@ export default styled.button`
   color: white;
   cursor: pointer;
   font-weight: bold;
+  /* TODO: Remove this margin and only add margin where necessary */
   margin-top: 1em;
 `

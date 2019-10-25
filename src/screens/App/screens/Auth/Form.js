@@ -6,9 +6,9 @@ export default styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
 
   /* min-width: 40rem; */
-  margin: 0 auto;
 
   /* background: pink; */
 `
