@@ -16,9 +16,6 @@ const DeckInfo = ({ selectedDeck, numOfCards }) => (
       background: ${({ theme }) => theme.colors.secondary};
       color: white;
       height: 40vh;
-      display: flex;
-      position: relative;
-      z-index: 1;
 
       button {
         padding-right: 3rem;
@@ -27,54 +24,66 @@ const DeckInfo = ({ selectedDeck, numOfCards }) => (
       }
     `}
   >
-    {/* Deck Comp */}
+    {/* Container for Deck Info */}
     <div
-      css={{
-        width: '50%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'relative',
-        zIndex: 1,
-      }}
+      css={`
+        width: 80%;
+        margin: 0 auto;
+        z-index: 1;
+        position: relative;
+        display: flex;
+        height: 100%;
+      `}
     >
-      <Deck
-        title="test title"
-        firstCardName="test first card"
-        tags={['tag 1', 'tag 2']}
-      />
-    </div>
-
-    {/* Deck Info */}
-    <div
-      css={{
-        width: '50%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
-
-        h2: {
-          fontSize: '3.5rem',
-          fontWeight: 'bold',
+      {/* Deck Comp */}
+      <div
+        css={{
+          width: '50%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          position: 'relative',
           zIndex: 1,
-        },
-
-        '> div, button': {
-          margin: '1rem 0',
-        },
-      }}
-    >
-      <h2>{selectedDeck.title}</h2>
-      <div>
-        {/* TODO: Make this dynamic */}
-        <span>
-          {numOfCards} {numOfCards > 1 ? 'Cards' : 'Card'}
-        </span>
-        <span css={{ padding: '0 .5rem' }}>&middot;</span>
-        <span>by John Doe</span>
+        }}
+      >
+        <Deck
+          title="test title"
+          firstCardName="test first card"
+          tags={['tag 1', 'tag 2']}
+        />
       </div>
-      <Button>Study</Button>
+
+      {/* Deck Info */}
+      <div
+        css={{
+          width: '50%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'column',
+
+          h2: {
+            fontSize: '3.5rem',
+            fontWeight: 'bold',
+            zIndex: 1,
+          },
+
+          '> div, button': {
+            margin: '1rem 0',
+          },
+        }}
+      >
+        <h2>{selectedDeck.title}</h2>
+        <div>
+          {/* TODO: Make this dynamic */}
+          <span>
+            {numOfCards} {numOfCards > 1 ? 'Cards' : 'Card'}
+          </span>
+          <span css={{ padding: '0 .5rem' }}>&middot;</span>
+          <span>by John Doe</span>
+        </div>
+        <Button>Study</Button>
+      </div>
     </div>
   </section>
 )
@@ -129,6 +138,8 @@ const CurrentDeck = ({ decksInfo, deckId }) => {
         background: #e6e6e6;
       `}
     >
+      
+      {/* Deck Info Section */}
       {/* <h2>{decksInfo[0].title}</h2> */}
       {/* Add loading screen */}
       {decksInfo.length !== 0 ? (
@@ -137,10 +148,11 @@ const CurrentDeck = ({ decksInfo, deckId }) => {
         <div>Loading...</div>
       )}
 
+      {/* Cards Section */}
       <div
         css={`
           min-height: 60vh;
-          width: 85%;
+          width: 80%;
           margin: 0 auto;
         `}
       >
@@ -177,6 +189,8 @@ const CurrentDeck = ({ decksInfo, deckId }) => {
             New Card
           </ClearButton>
         </div>
+
+        {/* Cards */}
         <div
           css={`
             display: grid;
