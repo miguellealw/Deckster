@@ -1,7 +1,9 @@
 import React from 'react'
 // import MediaQuery from "react-responsive";
-// import { Router } from "@reach/router";
+import { Link } from '@reach/router'
 import { withTheme } from 'styled-components/macro'
+
+import { getFirstCardInDeck } from 'services/card-service'
 
 // Shared Components
 import Deck from 'shared/components/Deck'
@@ -12,7 +14,7 @@ import IsolatedContainer from 'shared/components/IsolatedContainer'
 import ProfilePage from './ProfilePage'
 import DeckList from './DeckList'
 
-const Profile = ({ theme }) => {
+const Profile = ({ theme, decksInfo }) => {
   // const [isOpen, setOpen] = React.useState(false);
 
   // const handleClose = () => setOpen(false);
@@ -23,6 +25,7 @@ const Profile = ({ theme }) => {
       <IsolatedContainer
         css={`
           display: grid;
+          min-height: initial;
 
           ${({ theme }) => theme.media.tabletLandscapeUp`
             width: 90%;
@@ -37,6 +40,7 @@ const Profile = ({ theme }) => {
             marginTop: '2em',
             marginLeft: 'calc(2em - 3rem)',
             marginBottom: '1em',
+            // height: '.5rem'
           }}
           data-testid="profile-page-title"
         >
@@ -48,6 +52,7 @@ const Profile = ({ theme }) => {
           css={{
             display: 'flex',
             marginLeft: '2em',
+            // height: '.5rem'
           }}
         >
           <Dropdown label="Sort">
@@ -75,36 +80,30 @@ const Profile = ({ theme }) => {
         </div>
 
         <DeckList>
-          <Deck
-            title="test title"
-            firstCardName="test first card"
-            tags={['tag 1', 'tag 2', 'tag 3', 'tag 4', 'tag 5']}
-          />
-          <Deck
-            title="test title"
-            firstCardName="test first card"
-            tags={['tag 1', 'tag 2']}
-          />
-          <Deck
-            title="test title"
-            firstCardName="test first card"
-            tags={['tag 1', 'tag 2']}
-          />
-          <Deck
-            title="test title"
-            firstCardName="test first card"
-            tags={['tag 1', 'tag 2']}
-          />
-          <Deck
-            title="test title"
-            firstCardName="test first card"
-            tags={['tag 1', 'tag 2']}
-          />
-          <Deck
-            title="test title"
-            firstCardName="test first card"
-            tags={['tag 1', 'tag 2']}
-          />
+          {decksInfo.map(deck => {
+            //TODO: Make this better somehow
+            // FIXME: wont work because this is async in render function
+            // const firstCardInDeck = await getFirstCardInDeck(deck.id)
+            // console.log('react first card in dekc', firstCardInDeck)
+
+            return (
+              <Link
+                key={deck.id}
+                to={`my-decks/${deck.id}`}
+                css={`
+                  :hover {
+                    text-decoration: none;
+                  }
+                `}
+              >
+                <Deck
+                  title={deck.title}
+                  firstCardName={"first card test"}
+                  tags={deck.tags}
+                />
+              </Link>
+            )
+          })}
         </DeckList>
       </IsolatedContainer>
 

@@ -3,6 +3,7 @@
     {
       "id": 1,
       "title": "Calculus Terms",
+      "firstCardName":"first card name",
       "tags": [
         "math",
         "calculus"
@@ -11,18 +12,14 @@
     {
       "id": 2,
       "title": "Physics Terms",
-      "tags": [
-        "physics",
-        "classical physics"
-      ]
+      "firstCardName": "first card name",
+      "tags": ["physics", "classical physics"]
     },
     {
       "id": 3,
       "title": "Trig Identities",
-      "tags": [
-        "math",
-        "trigonometry"
-      ]
+      "firstCardName": "first card name",
+      "tags": ["math", "trigonometry"]
     }
   ],
   "cards": [
