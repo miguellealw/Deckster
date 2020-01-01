@@ -1,13 +1,15 @@
 // Current Deck Screen
 
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components/macro'
+
+import { getCardsFromDeck } from 'services/card-service'
+
 import IsolatedContainer from 'shared/components/IsolatedContainer'
 import Button from 'shared/components/Button'
 import Deck from 'shared/components/Deck'
-import { getCardsFromDeck } from 'services/card-service'
 import ClearButton from 'shared/components/ClearButton'
-
-import styled from 'styled-components/macro'
+import Card from 'shared/components/Card'
 
 const DeckInfo = ({ selectedDeck, numOfCards }) => (
   <section
@@ -88,28 +90,6 @@ const DeckInfo = ({ selectedDeck, numOfCards }) => (
   </section>
 )
 
-const width = 23
-const height = width - 9
-const Card = styled.div`
-  font-size: 1.5rem;
-  font-weight: bold;
-  width: ${width}rem;
-  height: ${height}rem;
-  border-radius: 0.438em;
-  margin: 1em;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
-  background: white;
-  cursor: pointer;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &:hover {
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
-  }
-`
-
 const CurrentDeck = ({ decksInfo, deckId }) => {
   // TODO: Move this to state
   let numOfCards
@@ -138,7 +118,6 @@ const CurrentDeck = ({ decksInfo, deckId }) => {
         background: #e6e6e6;
       `}
     >
-      
       {/* Deck Info Section */}
       {/* <h2>{decksInfo[0].title}</h2> */}
       {/* Add loading screen */}
