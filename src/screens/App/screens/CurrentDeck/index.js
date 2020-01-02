@@ -1,7 +1,6 @@
 // Current Deck Screen
-
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components/macro'
+import 'styled-components/macro'
 
 import { getCardsFromDeck } from 'services/card-service'
 
@@ -52,6 +51,7 @@ const DeckInfo = ({ selectedDeck, numOfCards }) => (
           title="test title"
           firstCardName="test first card"
           tags={['tag 1', 'tag 2']}
+          showOptions={false}
         />
       </div>
 
@@ -90,6 +90,7 @@ const DeckInfo = ({ selectedDeck, numOfCards }) => (
   </section>
 )
 
+// Screen
 const CurrentDeck = ({ decksInfo, deckId }) => {
   // TODO: Move this to state
   let numOfCards
@@ -99,6 +100,7 @@ const CurrentDeck = ({ decksInfo, deckId }) => {
   // const [numOfCards, setNumOfCards] = useState(0);
   // const [selectedDeck, setSelectedDeck] = useState({});
 
+  // Fetch Data
   useEffect(() => {
     async function fetchData() {
       const cardsData = await getCardsFromDeck(deckId)
@@ -119,8 +121,7 @@ const CurrentDeck = ({ decksInfo, deckId }) => {
       `}
     >
       {/* Deck Info Section */}
-      {/* <h2>{decksInfo[0].title}</h2> */}
-      {/* Add loading screen */}
+      {/* TODO: Add loading screen */}
       {decksInfo.length !== 0 ? (
         <DeckInfo selectedDeck={selectedDeck} numOfCards={numOfCards} />
       ) : (

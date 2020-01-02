@@ -1,6 +1,13 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react'
+import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
+
+import {
+  faEllipsisH,
+  faEdit,
+  faTrashAlt,
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const width = 23
 const height = width - 9
@@ -82,6 +89,7 @@ const DeckInfo = styled.div`
 const DeckTitle = styled.span`
   font-size: 1.1rem;
   font-weight: bold;
+  color: ${({ theme }) => theme.colors.secondary};
 `
 
 // const DeckDescription = styled.div`
@@ -89,7 +97,7 @@ const DeckTitle = styled.span`
 //   color: ${({ theme }) => theme.colors.secondaryGray};
 //   line-height: 1.3em;
 //   margin: 1em 0;
-// `;
+// `
 
 const Tag = styled.li`
   font-size: 0.7rem;
@@ -109,9 +117,104 @@ const TagContainer = styled.ul`
   display: flex;
 `
 
-const Deck = ({ title, firstCardName, tags }) => {
+const Deck = ({ title, firstCardName, tags, showOptions = true }) => {
+  const [isOptionsOpen, setOptionsOpen] = useState(false)
+
   return (
     <DeckContainer>
+      {showOptions && (
+        <>
+          {/* Deck Options Icon */}
+          <div
+            css={`
+              color: ${({ theme }) => theme.colors.secondaryGray};
+              width: 1.5em;
+              height: 1.5em;
+              margin: 0.5em;
+              /* background: gray; */
+              /* padding: 1em; */
+              border-radius: 100%;
+              position: absolute;
+              top: 0;
+              right: 0;
+              /* box-shadow: 0px 0px 10px rgba(0, 0, 0, .5); */
+              z-index: 5;
+
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              &:hover {
+                color: black;
+              }
+            `}
+            onClick={e => {
+              e.preventDefault()
+
+              setOptionsOpen(!isOptionsOpen)
+            }}
+          >
+            <FontAwesomeIcon icon={faEllipsisH} />
+          </div>
+
+          {/* Deck Options */}
+          {isOptionsOpen && (
+            <div
+              css={`
+                font-size: 0.85rem;
+                background: ${({ theme }) => theme.colors.primaryGray};
+                box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+                position: absolute;
+                top: 2.5em;
+                right: 0.5em;
+
+                display: flex;
+                flex-direction: column;
+
+                span {
+                  width: 100%;
+                  height: 50%;
+                  color: black;
+                  padding: 0.7em 1.7em;
+
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+
+                  &:hover {
+                    background: ${({ theme }) => theme.colors.secondaryGray};
+                  }
+                }
+              `}
+            >
+              <span
+                css={`
+                  border-bottom: 1px solid
+                    ${({ theme }) => theme.colors.secondaryGray};
+                `}
+              >
+                <FontAwesomeIcon
+                  icon={faEdit}
+                  css={`
+                    margin-right: 0.5em;
+                  `}
+                />
+                Edit
+              </span>
+              <span>
+                <FontAwesomeIcon
+                  icon={faTrashAlt}
+                  css={`
+                    margin-right: 0.5em;
+                  `}
+                />
+                Delete
+              </span>
+            </div>
+          )}
+        </>
+      )}
+
       <span className="deckFirstCard">{firstCardName}</span>
       <DeckInfo>
         <DeckTitle>{title}</DeckTitle>
@@ -132,6 +235,7 @@ Deck.propTypes = {
   title: PropTypes.string.isRequired,
   firstCardName: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  showOptions: PropTypes.bool,
 }
 
 export default Deck
