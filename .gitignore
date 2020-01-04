@@ -25,3 +25,5 @@ yarn-error.log*
 
 example.http
 component-structure-notes.md
+
+db-test.json
