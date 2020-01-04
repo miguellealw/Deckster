@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export default styled.h3`
-  color: #d5d5d5;
+  color: ${({theme}) => theme.colors.secondaryGray};
   margin-top: 1em;
   text-align: center;
 
