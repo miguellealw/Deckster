@@ -1,12 +1,14 @@
-import React, { Component, Suspense } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 import { Router } from '@reach/router'
-import Loader from 'react-loader-spinner'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
-import { getDecks } from 'services/deck-service'
+import { decksAPI } from 'API'
 
 import theme from 'shared/theme'
 import Home from './screens/Home'
 import Layout from 'shared/components/Layout'
+import Logo from 'shared/components/Logo'
+
+// Lazy Loaded Pages
 const Profile = React.lazy(() => import('./screens/Profile'))
 const Decks = React.lazy(() => import('./screens/Decks'))
 const Explore = React.lazy(() => import('./screens/Explore'))
@@ -91,49 +93,60 @@ const LoaderContainer = styled.div`
 //   },
 // ]
 
-class App extends Component {
-  state = {
-    decksInfo: [],
-  }
+const App = () => {
+  const [decksInfo, setDecksInfo] = useState([])
 
-  async componentDidMount() {
-    const decksInfo = await getDecks()
-    this.setState({ decksInfo })
-  }
+  useEffect(() => {
+    async function fetchDecks() {
+      const decksInfo = await decksAPI.getDecks()
+      setDecksInfo(decksInfo)
+    }
 
-  render() {
-    return (
-      <>
-        <GlobalStyle />
-        <Suspense
-          fallback={
-            // FIXME: fix loader
-            <LoaderContainer>
-              <Loader type="Puff" height="50" width="50" />
-            </LoaderContainer>
-          }
-        >
+    fetchDecks()
+  }, [])
+
+  return (
+    <>
+      <GlobalStyle />
+      <Suspense
+        fallback={
+          // FIXME: fix loader
           <ThemeProvider theme={theme}>
-            <Layout>
-              <Router>
-                <Home path="/" />
-                <Login path="/login" />
-                <Signup path="/signup" />
-                {/* <Profile path="/profile/*" /> */}
-                <Profile path="/profile" decksInfo={this.state.decksInfo} />
-                <Explore path="/explore" />
-                <Decks path="/decks" />
-                <CurrentDeck
-                  path="/profile/my-decks/:deckId"
-                  decksInfo={this.state.decksInfo}
-                />
-              </Router>
-            </Layout>
+            <LoaderContainer>
+              <Logo
+                colorOfText="#152134"
+                css={`
+                  font-size: 1.5rem;
+                `}
+              />
+            </LoaderContainer>
           </ThemeProvider>
-        </Suspense>
-      </>
-    )
-  }
+        }
+      >
+        <ThemeProvider theme={theme}>
+          <Layout>
+            <Router>
+              <Home path="/" />
+              <Login path="/login" />
+              <Signup path="/signup" />
+              {/* <Profile path="/profile/*" /> */}
+              <Profile
+                path="/profile"
+                decksInfo={decksInfo}
+                setDecksInfo={setDecksInfo}
+              />
+              <Explore path="/explore" />
+              <Decks path="/decks" />
+              <CurrentDeck
+                path="/profile/my-decks/:deckId"
+                decksInfo={decksInfo}
+              />
+            </Router>
+          </Layout>
+        </ThemeProvider>
+      </Suspense>
+    </>
+  )
 }
 
 export default App

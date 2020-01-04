@@ -1,27 +1,32 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Link } from '@reach/router'
+import { withTheme } from 'styled-components/macro'
+const Logo = ({ colorOfText = 'white', theme, ...props }) => {
+  return (
+    <h2
+      css={`
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        font-weight: 900;
+        letter-spacing: 0.2rem;
+        margin: 0;
+        color: ${colorOfText};
 
-const Logo = styled.h2`
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  font-weight: 900;
-  letter-spacing: 0.2rem;
-  margin: 0;
-  color: white;
-`
-
-const blueStyles = {
-  color: '#009DFF',
-}
-
-export default () => (
-  <Link to="/" style={{ textDecoration: 'none' }}>
-    <Logo>
-      <span style={blueStyles}>Deck</span>ster
+      ` + props.css}
+      {...props}
+    >
+      <span
+        css={`
+          color: ${theme.colors.primary};
+        `}
+      >
+        Deck
+      </span>
+      ster
       <span role="img" aria-label="flashcards">
         📇
       </span>
-    </Logo>
-  </Link>
-)
+    </h2>
+  )
+}
+
+export default withTheme(Logo)
