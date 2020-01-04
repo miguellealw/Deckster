@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from '@reach/router'
-import styled, { withTheme } from 'styled-components'
+import styled, { withTheme } from 'styled-components/macro'
 
 import { PhoneOnly, TabletPortraitUp } from './Responsive'
 
 import Logo from 'shared/components/Logo'
+import ClearButton from 'shared/components/ClearButton'
 
 const NavigationContainer = styled.nav`
   display: flex;
@@ -26,23 +27,6 @@ const ulStyles = {
   listStyle: 'none',
   margin: 0,
 }
-
-const NavButton = styled.button`
-  margin: 0;
-  font-family: Nunito;
-  font-weight: bold;
-  padding: 0.5rem 2rem;
-  border-radius: 100rem;
-  background: none;
-  border: 2px solid ${({ theme }) => theme.colors.primary};
-  cursor: pointer;
-  color: white;
-
-  &:hover {
-    border: 2px solid #0063ff;
-    background: ${({ theme }) => theme.colors.gradient};
-  }
-`
 
 /* background: red; */
 const ButtonContainer = styled.ul`
@@ -109,7 +93,7 @@ const DropdownContainer = styled.ul`
 
 const Dropdown = () => (
   <DropdownContainer data-testid="menu-dropdown">
-    <Link to="/profile/my-decks">
+    <Link to="/profile">
       <li>Profile</li>
     </Link>
     <Link to="/login">
@@ -126,23 +110,30 @@ const Navigation = ({ theme }) => {
 
   return (
     <NavigationContainer data-testid="navigation">
-      <Logo />
+      <Link
+        to="/"
+        css={`
+          text-decoration: none;
+        `}
+      >
+        <Logo />
+      </Link>
 
       <ButtonContainer style={ulStyles}>
         <TabletPortraitUp>
           <li>
-            <Link to="/profile/my-decks">
-              <NavButton>Profile</NavButton>
+            <Link to="/profile">
+              <ClearButton>Profile</ClearButton>
             </Link>
           </li>
           <li>
             <Link to="/login">
-              <NavButton>Login</NavButton>
+              <ClearButton>Login</ClearButton>
             </Link>
           </li>
           <li>
             <Link to="/signup">
-              <NavButton>Sign Up</NavButton>
+              <ClearButton>Sign Up</ClearButton>
             </Link>
           </li>
         </TabletPortraitUp>
