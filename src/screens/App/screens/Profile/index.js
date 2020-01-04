@@ -3,21 +3,23 @@ import React from 'react'
 import { Link } from '@reach/router'
 import { withTheme } from 'styled-components/macro'
 
-import { getFirstCardInDeck } from 'services/card-service'
+// import { getFirstCardInDeck } from 'services/card-service'
 
 // Shared Components
 import Deck from 'shared/components/Deck'
 import Dropdown from 'shared/components/Dropdown'
 import IsolatedContainer from 'shared/components/IsolatedContainer'
+import Button from 'shared/components/Button'
 
 // Page Components
 import ProfilePage from './ProfilePage'
 import DeckList from './DeckList'
+import CreateDeckModal from './CreateDeckModal'
 
-const Profile = ({ theme, decksInfo }) => {
-  // const [isOpen, setOpen] = React.useState(false);
+const Profile = ({ decksInfo, setDecksInfo }) => {
+  const [isOpen, setOpen] = React.useState(false)
 
-  // const handleClose = () => setOpen(false);
+  const handleClose = () => setOpen(false)
   // const handleOpen = () => setOpen(true);
 
   return (
@@ -49,11 +51,30 @@ const Profile = ({ theme, decksInfo }) => {
 
         {/* Dropdown Container */}
         <div
-          css={{
-            display: 'flex',
-            marginLeft: '2em',
-            // height: '.5rem'
-          }}
+          css={`
+            display: flex;
+            margin-left: 2em;
+            /* height: .5rem */
+
+            ${({ theme }) => theme.media.phoneOnly`
+              flex-direction: column;
+
+              width: 100%;
+              margin: 0 auto;
+
+              background: pink;
+
+              > select {
+                // background: red;
+                width: 100%;
+                // padding: 1em;
+              }
+
+              > button {
+                width: 100%;
+              }
+            `}
+          `}
         >
           <Dropdown label="Sort">
             <Dropdown.Item value="Alphabetical (A-Z)">
@@ -77,34 +98,57 @@ const Profile = ({ theme, decksInfo }) => {
               Computer Science
             </Dropdown.Item>
           </Dropdown>
+
+          <Button
+            css={`
+              margin-left: auto;
+            `}
+            onClick={() => setOpen(true)}
+          >
+            New Deck
+          </Button>
         </div>
 
         <DeckList>
-          {decksInfo.map(deck => {
-            //TODO: Make this better somehow
-            // FIXME: wont work because this is async in render function
-            // const firstCardInDeck = await getFirstCardInDeck(deck.id)
-            // console.log('react first card in dekc', firstCardInDeck)
+          {decksInfo.length === 0
+            ? 'You have no decks yet.'
+            : decksInfo.map(deck => {
+                //TODO: Make this better somehow
+                // FIXME: wont work because this is async in render function
 
-            return (
-              <Link
-                key={deck.id}
-                to={`my-decks/${deck.id}`}
-                css={`
-                  :hover {
-                    text-decoration: none;
-                  }
-                `}
-              >
-                <Deck
-                  title={deck.title}
-                  firstCardName={"first card test"}
-                  tags={deck.tags}
-                />
-              </Link>
-            )
-          })}
+                // const firstCardInDeck = await getFirstCardInDeck(deck.id)
+                // console.log('react first card in dekc', firstCardInDeck)
+
+                return (
+                  <Link
+                    key={deck.id}
+                    to={`my-decks/${deck.id}`}
+                    data-deckid={deck.id}
+                    css={`
+                      :hover {
+                        text-decoration: none;
+                      }
+                    `}
+                  >
+                    <Deck
+                      title={deck.title}
+                      firstCardName={'first card test'}
+                      tags={deck.tags}
+                      decksInfo={decksInfo}
+                      setDecksInfo={setDecksInfo}
+                    />
+                  </Link>
+                )
+              })}
         </DeckList>
+
+        <CreateDeckModal
+          path="create-deck"
+          isOpen={isOpen}
+          handleClose={handleClose}
+          setDecksInfo={setDecksInfo}
+          decksInfo={decksInfo}
+        />
       </IsolatedContainer>
 
       {/* <Router>
