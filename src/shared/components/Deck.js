@@ -2,10 +2,13 @@ import React, { useState } from 'react'
 import styled from 'styled-components/macro'
 import PropTypes from 'prop-types'
 
+import { decksAPI } from 'API'
+
 import {
   faEllipsisH,
   faEdit,
   faTrashAlt,
+  faCheck,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -117,8 +120,42 @@ const TagContainer = styled.ul`
   display: flex;
 `
 
-const Deck = ({ title, firstCardName, tags, showOptions = true }) => {
+const EditingInput = ({title, setEditing}) => (
+  <div>
+    <input
+      value={title}
+      onClick={e => {
+        e.preventDefault()
+        // e.currentTarget.focus()
+      }}
+    />
+    <FontAwesomeIcon
+      icon={faCheck}
+      css={`
+        margin-left: 0.5em;
+        &:hover {
+          color: black;
+        }
+      `}
+      onClick={e => {
+        e.preventDefault();
+
+        setEditing(false)
+      }}
+    />
+  </div>
+)
+
+const Deck = ({
+  title,
+  firstCardName,
+  tags,
+  showOptions = true,
+  decksInfo,
+  setDecksInfo,
+}) => {
   const [isOptionsOpen, setOptionsOpen] = useState(false)
+  const [isEditing, setEditing] = useState(false)
 
   return (
     <DeckContainer>
@@ -192,6 +229,12 @@ const Deck = ({ title, firstCardName, tags, showOptions = true }) => {
                   border-bottom: 1px solid
                     ${({ theme }) => theme.colors.secondaryGray};
                 `}
+                onClick={async e => {
+                  e.preventDefault()
+                  setOptionsOpen(false)
+
+                  setEditing(true)
+                }}
               >
                 <FontAwesomeIcon
                   icon={faEdit}
@@ -201,7 +244,26 @@ const Deck = ({ title, firstCardName, tags, showOptions = true }) => {
                 />
                 Edit
               </span>
-              <span>
+              <span
+                onClick={async e => {
+                  e.preventDefault()
+                  const linkTag =
+                    e.currentTarget.parentElement.parentElement.parentElement
+
+                  const deckId = parseInt(linkTag.dataset.deckid)
+
+                  // Remove deck from database
+                  await decksAPI.deleteDeck(deckId)
+
+                  // TODO: use slice / splice instead
+                  const updatedDecks = decksInfo.filter(
+                    deck => deck.id !== deckId,
+                  )
+
+                  // Remove deleted deck from state
+                  setDecksInfo([...updatedDecks])
+                }}
+              >
                 <FontAwesomeIcon
                   icon={faTrashAlt}
                   css={`
@@ -217,7 +279,12 @@ const Deck = ({ title, firstCardName, tags, showOptions = true }) => {
 
       <span className="deckFirstCard">{firstCardName}</span>
       <DeckInfo>
-        <DeckTitle>{title}</DeckTitle>
+        {isEditing ? (
+          <EditingInput title={title} setEditing={setEditing} />
+        ) : (
+          <DeckTitle>{title}</DeckTitle>
+        )}
+
         <TagContainer>
           {/* TODO: change key */}
           {tags.map((tag, i) => (
