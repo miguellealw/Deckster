@@ -7,6 +7,7 @@ export default styled.i`
   right: 0.5em;
   cursor: pointer;
   color: ${props => props.theme.colors.secondaryGray};
+  z-index: 2;
   /* background: red; */
   /* padding: .3em; */
 

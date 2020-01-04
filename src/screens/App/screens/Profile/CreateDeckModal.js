@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactModal from 'react-modal'
+import 'styled-components/macro'
 
-import FormInput from 'shared/components/FormInput'
 import Button from 'shared/components/Button'
 import TextArea from 'shared/components/TextArea'
 import CloseIcon from './CloseIcon'
-import FormContainer from './FormContainer'
 
-export default ({ isOpen, handleClose }) => {
+import FormContainer from './FormContainer'
+import FormInput from 'shared/components/FormFields/TextField'
+import InputLabel from 'shared/components/FormFields/InputLabel'
+import Field from 'shared/components/FormFields/Field'
+
+import { cardsAPI } from 'API'
+
+export default ({ isOpen, handleClose, setDecksInfo, decksInfo }) => {
+  const [formData, setFormData] = useState('')
+
   return (
     <ReactModal
       isOpen={isOpen}
@@ -27,13 +35,30 @@ export default ({ isOpen, handleClose }) => {
     >
       <CloseIcon className="icon ion-md-close" onClick={handleClose} />
       <FormContainer>
-        <h2>Create Deck</h2>
-        <FormInput
-          label="Deck Name"
-          placeholder="World Capitals"
-          direction="column"
-        />
-        <FormInput label="Description (optional)" direction="column">
+        <h2
+          css={`
+            font-size: 3em;
+            font-weight: bold;
+            text-align: center;
+            color: ${props => props.theme.colors.secondary};
+            margin: 1em 0;
+          `}
+        >
+          Create Deck
+        </h2>
+        <Field>
+          <InputLabel htmlFor="deckName">Deck Name</InputLabel>
+          <FormInput
+            id="deckName"
+            aria-label="deck-name"
+            placeholder="World Capitals"
+            direction="column"
+            onChange={e => {
+              setFormData(e.currentTarget.value)
+            }}
+          />
+        </Field>
+        {/* <FormInput label="Description (optional)" direction="column">
           <TextArea
             rows="4"
             placeholder="Deck About the Capitals of the World"
@@ -43,8 +68,18 @@ export default ({ isOpen, handleClose }) => {
           label="Tags"
           placeholder="Geography, History"
           direction="column"
-        />
-        <Button>Create Deck</Button>
+        /> */}
+        <Button
+          onClick={async e => {
+            e.preventDefault()
+            const newDeck = await cardsAPI.createDeck(formData)
+
+            setDecksInfo([...decksInfo, newDeck]);
+            handleClose();
+          }}
+        >
+          Create Deck
+        </Button>
       </FormContainer>
     </ReactModal>
   )
