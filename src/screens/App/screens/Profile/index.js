@@ -6,7 +6,7 @@ import { withTheme } from 'styled-components/macro'
 // import { getFirstCardInDeck } from 'services/card-service'
 
 // Shared Components
-import Deck from 'shared/components/Deck'
+import Deck from 'shared/components/Deck/'
 import Dropdown from 'shared/components/Dropdown'
 import IsolatedContainer from 'shared/components/IsolatedContainer'
 import Button from 'shared/components/Button'
@@ -131,9 +131,7 @@ const Profile = ({ decksInfo, setDecksInfo }) => {
                     `}
                   >
                     <Deck
-                      title={deck.title}
-                      firstCardName={'first card test'}
-                      tags={deck.tags}
+                      currentDeck={deck}
                       decksInfo={decksInfo}
                       setDecksInfo={setDecksInfo}
                     />
