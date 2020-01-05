@@ -11,7 +11,7 @@ import FormInput from 'shared/components/FormFields/TextField'
 import InputLabel from 'shared/components/FormFields/InputLabel'
 import Field from 'shared/components/FormFields/Field'
 
-import { cardsAPI } from 'API'
+import { decksAPI } from 'API'
 
 export default ({ isOpen, handleClose, setDecksInfo, decksInfo }) => {
   const [formData, setFormData] = useState('')
@@ -72,7 +72,7 @@ export default ({ isOpen, handleClose, setDecksInfo, decksInfo }) => {
         <Button
           onClick={async e => {
             e.preventDefault()
-            const newDeck = await cardsAPI.createDeck(formData)
+            const newDeck = await decksAPI.createDeck(formData)
 
             setDecksInfo([...decksInfo, newDeck]);
             handleClose();
