@@ -5,6 +5,7 @@ const getDecks = async () => {
   return data
 }
 
+// TODO: make parameter object
 const createDeck = async deckName => {
   const { data } = await axios.post('http://localhost:3001/decks', {
     title: deckName,
@@ -19,8 +20,14 @@ const deleteDeck = async deckId => {
   await axios.delete(`http://localhost:3001/decks/${deckId}`)
 }
 
+const updateDeck = async (deckId, httpBody) => {
+  const { data } = await axios.patch(`http://localhost:3001/decks/${deckId}`, httpBody)
+  return data
+}
+
 export default {
   getDecks,
   createDeck,
-  deleteDeck
+  deleteDeck,
+  updateDeck,
 }
