@@ -1,0 +1,34 @@
+GET http://localhost:3001/decks
+###
+
+# ================ Gets decks with respective cards
+GET http://localhost:3001/decks?_embed=cards
+###
+# ================ Update deck
+
+PATCH http://localhost:3001/decks/4 HTTP/1.1
+content-type: application/json
+
+{
+  "title": "edit deck successful"
+}
+
+###
+
+# ================ Create Deck
+POST http://localhost:3001/decks HTTP/1.1
+content-type: application/json
+
+{
+  "id": 3,
+  "title": "Trig Identities",
+  "tags": [
+    "math",
+    "trigonometry"
+  ]
+}
+
+###
+
+# ================ Delete Deck
+DELETE http://localhost:3001/decks/9

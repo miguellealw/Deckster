@@ -1,0 +1,26 @@
+# ================ Gets all cards
+###
+GET http://localhost:3001/cards
+
+# ================ Gets cards from specific deck
+GET http://localhost:3001/decks/1/cards
+
+###
+
+# ================ Get first card from deck
+GET http://localhost:3001/decks/1/cards?_limit=1
+
+
+
+###
+
+# ================ Create Card
+POST http://localhost:3001/cards HTTP/1.1
+content-type: application/json
+
+{
+  "id": 5,
+  "front": "Pythagorean Identity",
+  "back": "* some identity image",
+  "deckId": 3
+}
