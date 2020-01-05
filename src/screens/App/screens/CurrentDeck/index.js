@@ -7,13 +7,15 @@ import { cardsAPI } from 'API'
 import IsolatedContainer from 'shared/components/IsolatedContainer'
 import ClearButton from 'shared/components/ClearButton'
 import Card from 'shared/components/Card'
-import DeckInfo from './CurrentDeckInfo'
+import DeckInfo from './DeckInfo'
 
 // Screen
 const CurrentDeck = ({ decksInfo, deckId }) => {
+  deckId = parseInt(deckId)
   // TODO: Move this to state
   let numOfCards
   let selectedDeck
+  const currentDeckInfo = decksInfo.find(deck => deck.id === deckId)
 
   const [cards, setCards] = useState([])
   // const [numOfCards, setNumOfCards] = useState(0);
@@ -42,7 +44,11 @@ const CurrentDeck = ({ decksInfo, deckId }) => {
       {/* Deck Info Section */}
       {/* TODO: Add loading screen */}
       {decksInfo.length !== 0 ? (
-        <DeckInfo selectedDeck={selectedDeck} numOfCards={numOfCards} />
+        <DeckInfo
+          currentDeck={currentDeckInfo}
+          selectedDeck={selectedDeck}
+          numOfCards={numOfCards}
+        />
       ) : (
         <div>Loading...</div>
       )}
