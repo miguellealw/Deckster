@@ -74,7 +74,7 @@ const DeckInfo = ({ selectedDeck, numOfCards, currentDeck }) => (
         <div>
           {/* TODO: Make this dynamic */}
           <span>
-            {numOfCards} {numOfCards > 1 ? 'Cards' : 'Card'}
+            {numOfCards} {numOfCards === 1 ? 'Card' : 'Cards'}
           </span>
           <span css={{ padding: '0 .5rem' }}>&middot;</span>
           <span>by John Doe</span>
