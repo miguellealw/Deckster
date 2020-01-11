@@ -95,6 +95,13 @@ const LoaderContainer = styled.div`
 
 const App = () => {
   const [decksInfo, setDecksInfo] = useState([])
+  const [currentDeck, setCurrentDeck] = useState(null)
+
+  // Modal State
+  const [isModalOpen, setModalOpen] = React.useState(false)
+  const closeModal = () => setModalOpen(false)
+  const openModal = () => setModalOpen(true)
+  
 
   useEffect(() => {
     async function fetchDecks() {
@@ -134,12 +141,20 @@ const App = () => {
                 path="/profile"
                 decksInfo={decksInfo}
                 setDecksInfo={setDecksInfo}
+                isModalOpen={isModalOpen}
+                setModalOpen={setModalOpen}
+                closeModal={closeModal}
+                openModal={openModal}
               />
               <Explore path="/explore" />
               <Decks path="/decks" />
               <CurrentDeck
                 path="/profile/my-decks/:deckId"
                 decksInfo={decksInfo}
+                isModalOpen={isModalOpen}
+                setModalOpen={setModalOpen}
+                closeModal={closeModal}
+                openModal={openModal}
               />
             </Router>
           </Layout>

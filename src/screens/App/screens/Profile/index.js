@@ -16,12 +16,14 @@ import ProfilePage from './ProfilePage'
 import DeckList from './DeckList'
 import CreateDeckModal from './CreateDeckModal'
 
-const Profile = ({ decksInfo, setDecksInfo }) => {
-  const [isOpen, setOpen] = React.useState(false)
-
-  const handleClose = () => setOpen(false)
-  // const handleOpen = () => setOpen(true);
-
+const Profile = ({
+  decksInfo,
+  setDecksInfo,
+  isModalOpen,
+  setModalOpen,
+  closeModal,
+  openModal,
+}) => {
   return (
     <ProfilePage>
       <IsolatedContainer
@@ -103,7 +105,7 @@ const Profile = ({ decksInfo, setDecksInfo }) => {
             css={`
               margin-left: auto;
             `}
-            onClick={() => setOpen(true)}
+            onClick={openModal}
           >
             New Deck
           </Button>
@@ -142,8 +144,8 @@ const Profile = ({ decksInfo, setDecksInfo }) => {
 
         <CreateDeckModal
           path="create-deck"
-          isOpen={isOpen}
-          handleClose={handleClose}
+          isModalOpen={isModalOpen}
+          closeModal={closeModal}
           setDecksInfo={setDecksInfo}
           decksInfo={decksInfo}
         />
@@ -154,7 +156,7 @@ const Profile = ({ decksInfo, setDecksInfo }) => {
             <DeckSlider path="favorited" />
             <CreateDeckModal
               path="create-deck"
-              isOpen={isOpen}
+              isModalOpen={isModalOpen}
               handleClose={handleClose}
             />
           </Router> */}

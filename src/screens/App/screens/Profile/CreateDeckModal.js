@@ -4,7 +4,7 @@ import 'styled-components/macro'
 
 import Button from 'shared/components/Button'
 import TextArea from 'shared/components/TextArea'
-import CloseIcon from './CloseIcon'
+import CloseIcon from 'shared/components/CloseIcon'
 
 import FormContainer from './FormContainer'
 import FormInput from 'shared/components/FormFields/TextField'
@@ -13,12 +13,12 @@ import Field from 'shared/components/FormFields/Field'
 
 import { decksAPI } from 'API'
 
-export default ({ isOpen, handleClose, setDecksInfo, decksInfo }) => {
+export default ({ isModalOpen, closeModal, setDecksInfo, decksInfo }) => {
   const [formData, setFormData] = useState('')
 
   return (
     <ReactModal
-      isOpen={isOpen}
+      isOpen={isModalOpen}
       contentLabel="Create Deck Form"
       style={{
         content: {
@@ -33,7 +33,7 @@ export default ({ isOpen, handleClose, setDecksInfo, decksInfo }) => {
         },
       }}
     >
-      <CloseIcon className="icon ion-md-close" onClick={handleClose} />
+      <CloseIcon className="icon ion-md-close" onClick={closeModal} />
       <FormContainer>
         <h2
           css={`
@@ -74,8 +74,8 @@ export default ({ isOpen, handleClose, setDecksInfo, decksInfo }) => {
             e.preventDefault()
             const newDeck = await decksAPI.createDeck(formData)
 
-            setDecksInfo([...decksInfo, newDeck]);
-            handleClose();
+            setDecksInfo([...decksInfo, newDeck])
+            closeModal()
           }}
         >
           Create Deck
