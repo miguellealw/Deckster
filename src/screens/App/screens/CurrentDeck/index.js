@@ -8,9 +8,17 @@ import IsolatedContainer from 'shared/components/IsolatedContainer'
 import ClearButton from 'shared/components/ClearButton'
 import Card from 'shared/components/Card'
 import DeckInfo from './DeckInfo'
+import CreateCardModal from './CreateCardModal'
 
 // Screen
-const CurrentDeck = ({ decksInfo, deckId }) => {
+const CurrentDeck = ({
+  decksInfo,
+  deckId,
+  isModalOpen,
+  setModalOpen,
+  closeModal,
+  openModal,
+}) => {
   deckId = parseInt(deckId)
   // TODO: Move this to state
   let numOfCards
@@ -92,6 +100,7 @@ const CurrentDeck = ({ decksInfo, deckId }) => {
                 color: white;
               }
             `}
+            onClick={openModal}
           >
             New Card
           </ClearButton>
@@ -126,6 +135,12 @@ const CurrentDeck = ({ decksInfo, deckId }) => {
           </div>
         )}
       </div>
+
+      <CreateCardModal
+        isModalOpen={isModalOpen}
+        setModalOpen={setModalOpen}
+        closeModal={closeModal}
+      />
     </IsolatedContainer>
   )
 }
