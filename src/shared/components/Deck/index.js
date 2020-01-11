@@ -138,7 +138,9 @@ const Deck = ({ currentDeck, showOptions = true, decksInfo, setDecksInfo }) => {
         if (e.key === 'Enter') {
           e.preventDefault()
           if (value !== currentDeck.title) updateDecksInfo(value)
-          setEditing(false)
+
+          // Wait 100ms to avoid a 'flash' of data
+          setTimeout(() => setEditing(false), 100)
         }
       }}
     >

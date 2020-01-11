@@ -42,7 +42,8 @@ const EditingInput = ({
           // Only make http req if input field is changed
           if (value !== title) updateDecksInfo(value)
 
-          setEditing(false)
+          // Wait 100ms to avoid a 'flash' of data
+          setTimeout(() => setEditing(false), 100)
         }}
       />
       <span
@@ -59,7 +60,8 @@ const EditingInput = ({
           //Reset form value to title
           setValue(title)
 
-          setEditing(false)
+          // Wait 100ms to avoid a 'flash' of data
+          setTimeout(() => setEditing(false), 100)
         }}
       >
         Cancel
