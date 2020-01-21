@@ -14,4 +14,31 @@ const getFirstCardInDeck = async deckId => {
   return data
 }
 
-export default { getCardsFromDeck, getFirstCardInDeck }
+const createCard = async body => {
+  const { data } = await axios.post('http://localhost:3001/cards', body)
+
+  return data
+}
+
+const updateCard = async (cardId, body) => {
+  const { data } = await axios.patch(
+    `http://localhost:3001/cards/${cardId}`,
+    body,
+  )
+
+  return data
+}
+
+const deleteCard = async cardId => {
+  const { data } = await axios.delete(`http://localhost:3001/cards/${cardId}`)
+
+  return data
+}
+
+export default {
+  getCardsFromDeck,
+  getFirstCardInDeck,
+  createCard,
+  updateCard,
+  deleteCard,
+}

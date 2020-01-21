@@ -24,3 +24,22 @@ content-type: application/json
   "back": "* some identity image",
   "deckId": 3
 }
+
+
+###
+# ================ Update Card
+PATCH http://localhost:3001/cards/11 HTTP/1.1
+content-type: application/json
+
+{
+  "front": "front edited",
+  "back": "back edited",
+  "deckId": 4
+}
+
+###
+# ================ Delete Card
+
+DELETE http://localhost:3001/cards/16 HTTP/1.1
+
+

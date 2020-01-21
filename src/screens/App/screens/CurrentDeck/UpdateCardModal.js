@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import ReactModal from 'react-modal'
 import 'styled-components/macro'
@@ -8,27 +8,31 @@ import TextArea from 'shared/components/TextArea'
 import CloseIcon from 'shared/components/CloseIcon'
 
 import FormContainer from '../Profile/FormContainer'
-import FormInput from 'shared/components/FormFields/TextField'
 import InputLabel from 'shared/components/FormFields/InputLabel'
 import Field from 'shared/components/FormFields/Field'
 
-import { cardsAPI } from 'API'
-
-const CreateCardModal = ({
+const UpdateCardModal = ({
   isModalOpen,
   setModalOpen,
   currentDeckInfo,
-  createCard,
+  updateCard,
+  selectedCard,
 }) => {
-  const [cardFront, setCardFront] = useState('')
-  const [cardBack, setCardBack] = useState('')
+  const [cardFront, setCardFront] = useState(selectedCard.front)
+  const [cardBack, setCardBack] = useState(selectedCard.back)
 
   let currentDeckId = currentDeckInfo.id
+
+  // This is done to update the front and back when a card is selected to edit
+  useEffect(() => {
+    setCardFront(selectedCard.front)
+    setCardBack(selectedCard.back)
+  }, [selectedCard])
 
   return (
     <ReactModal
       isOpen={isModalOpen}
-      contentLabel="Create Deck Form"
+      contentLabel="Update Deck Form"
       style={{
         content: {
           minWidth: '2em',
@@ -44,7 +48,11 @@ const CreateCardModal = ({
     >
       <CloseIcon
         className="icon ion-md-close"
-        onClick={() => setModalOpen(false)}
+        onClick={() => {
+          setModalOpen(false)
+          setCardFront(selectedCard.front)
+          setCardBack(selectedCard.back)
+        }}
       />
       <FormContainer>
         <h2
@@ -56,7 +64,7 @@ const CreateCardModal = ({
             margin: 1em 0;
           `}
         >
-          Create Cards
+          Edit Card
         </h2>
         {/* <Field>
           <InputLabel htmlFor="deckName">Deck Name</InputLabel>
@@ -70,7 +78,6 @@ const CreateCardModal = ({
             }}
           />
         </Field> */}
-        <div></div>
         <Field>
           <InputLabel htmlFor="cardFront">Front</InputLabel>
           <TextArea
@@ -107,19 +114,20 @@ const CreateCardModal = ({
         <Button
           onClick={async e => {
             e.preventDefault()
-            await createCard({ cardFront, cardBack, currentDeckId })
-
-            setCardFront('')
-            setCardBack('')
+            await updateCard(selectedCard.id, {
+              cardFront,
+              cardBack,
+              deckId: currentDeckId,
+            })
 
             setModalOpen(false)
           }}
         >
-          Create Cards
+          Edit Card
         </Button>
       </FormContainer>
     </ReactModal>
   )
 }
 
-export default CreateCardModal
+export default UpdateCardModal
