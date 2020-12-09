@@ -15,7 +15,9 @@ const Home = () => (
       <PageTitle data-testid="home-page-title">
         <span>Deck</span>ster
       </PageTitle>
-      <PageSubTitle>Create and Study Decks of Cards with Rich Text</PageSubTitle>
+      <PageSubTitle>
+        Create and Study Decks of Cards with Rich Text
+      </PageSubTitle>
       <Link to="/signup">
         {/* <Button>Start Now</Button> */}
         <StartNowButton>Start Now</StartNowButton>

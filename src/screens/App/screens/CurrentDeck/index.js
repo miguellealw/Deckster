@@ -1,7 +1,7 @@
 // Current Deck Screen
 import React, { useEffect, useState } from 'react'
 import 'styled-components/macro'
-import {Link} from "@reach/router"
+import { Link } from '@reach/router'
 
 import { cardsAPI } from 'API'
 

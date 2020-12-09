@@ -21,7 +21,10 @@ const deleteDeck = async deckId => {
 }
 
 const updateDeck = async (deckId, httpBody) => {
-  const { data } = await axios.patch(`http://localhost:3001/decks/${deckId}`, httpBody)
+  const { data } = await axios.patch(
+    `http://localhost:3001/decks/${deckId}`,
+    httpBody,
+  )
   return data
 }
 

@@ -16,7 +16,7 @@ const CardWrapper = styled.div`
   height: ${height}rem;
   border-radius: 0.438em;
   margin: 1em;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.3);
   background: white;
   cursor: pointer;
 
@@ -66,7 +66,6 @@ const CardOptions = ({
 
 const Card = ({ cardInfo, setSelectedCard, setModalOpen, deleteCard }) => {
   // const [isEditing, setIsEditing] = useState(false)
-
 
   return (
     <CardWrapper>

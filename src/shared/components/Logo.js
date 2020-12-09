@@ -3,7 +3,8 @@ import { withTheme } from 'styled-components/macro'
 const Logo = ({ colorOfText = 'white', theme, ...props }) => {
   return (
     <h2
-      css={`
+      css={
+        `
         text-transform: uppercase;
         font-size: 0.7rem;
         font-weight: 900;
@@ -11,7 +12,8 @@ const Logo = ({ colorOfText = 'white', theme, ...props }) => {
         margin: 0;
         color: ${colorOfText};
 
-      ` + props.css}
+      ` + props.css
+      }
       {...props}
     >
       <span

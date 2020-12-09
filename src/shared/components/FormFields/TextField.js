@@ -12,7 +12,7 @@ const TextFieldContainer = styled.div`
   align-items: center;
 `
 
-export default (props) => (
+export default props => (
   <TextFieldContainer>
     <Input {...props}></Input>
   </TextFieldContainer>

@@ -22,7 +22,7 @@ export const validLoginUserSchema = yup.object().shape({
 
 export const validSignupUserSchema = yup.object().shape({
   email: yup
-  .string()
+    .string()
     .min(3, emailNotLongEnough)
     .max(255)
     .email(invalidEmail)
@@ -31,9 +31,9 @@ export const validSignupUserSchema = yup.object().shape({
   lastName: yup.string().required('Last name is required'),
   password: registerPasswordValidation,
   confirmPassword: yup
-  .string()
-  .oneOf([yup.ref('password')], 'Passwords do not match')
-  .required('Password Confirmation is Required'),
+    .string()
+    .oneOf([yup.ref('password')], 'Passwords do not match')
+    .required('Password Confirmation is Required'),
 })
 
 // const invalidLogin = 'Invalid Login'

@@ -71,13 +71,13 @@ describe('Navigation is Responsive', () => {
     )
 
     const menuIcon = getByLabelText('menu')
-    
+
     // Check 'toggability'
     fireEvent.click(menuIcon)
     const menuDropdown = getByTestId('menu-dropdown')
-    expect(menuDropdown).toBeInTheDocument();
+    expect(menuDropdown).toBeInTheDocument()
 
-    fireEvent.click(menuIcon);
-    expect(menuDropdown).not.toBeInTheDocument();
+    fireEvent.click(menuIcon)
+    expect(menuDropdown).not.toBeInTheDocument()
   })
 })

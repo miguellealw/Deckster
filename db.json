@@ -4,35 +4,23 @@
       "id": 1,
       "title": "Calculus Terms",
       "firstCardName": "first card name",
-      "tags": [
-        "math",
-        "calculus"
-      ]
+      "tags": ["math", "calculus"]
     },
     {
       "id": 2,
       "title": "Physics Terms",
       "firstCardName": "first card name",
-      "tags": [
-        "physics",
-        "classical physics"
-      ]
+      "tags": ["physics", "classical physics"]
     },
     {
       "id": 3,
       "title": "Trig Identities",
       "firstCardName": "first card name",
-      "tags": [
-        "math",
-        "trigonometry"
-      ]
+      "tags": ["math", "trigonometry"]
     },
     {
-      "title": "edit 9",
-      "tags": [
-        "test tag 1",
-        "test tag 2"
-      ],
+      "title": "Coding 6",
+      "tags": ["test tag 1", "test tag 2"],
       "firstCardName": "first card name",
       "id": 4
     }
@@ -41,7 +29,7 @@
     {
       "id": 1,
       "front": "Derivative",
-      "back": "Slope of a tangent line",
+      "back": "Slope of a curve at a point",
       "deckId": 1
     },
     {
@@ -58,15 +46,57 @@
     },
     {
       "id": 4,
-      "front": "Dynamics",
-      "back": "Study of the 'why' of motion",
-      "deckId": 2
+      "front": "bruh edit",
+      "back": "fr",
+      "deckId": 4
     },
     {
       "id": 5,
       "front": "Pythagorean Identity",
       "back": "* some identity image",
       "deckId": 3
+    },
+    {
+      "front": "test front",
+      "back": "test back\n",
+      "deckId": 4,
+      "id": 6
+    },
+    {
+      "front": "test front 2",
+      "back": "test back\n",
+      "deckId": 4,
+      "id": 6
+    },
+    {
+      "front": "test front 3",
+      "back": "test back\n",
+      "deckId": 4,
+      "id": 6
+    },
+    {
+      "front": "test front 4",
+      "back": "test back\n",
+      "deckId": 4,
+      "id": 6
+    },
+    {
+      "front": "front 2",
+      "back": "back 2",
+      "deckId": 4,
+      "id": 7
+    },
+    {
+      "front": "Double Angle Identites",
+      "back": "** some image",
+      "deckId": 3,
+      "id": 8
+    },
+    {
+      "front": "Limit",
+      "back": "some def",
+      "deckId": 1,
+      "id": 9
     }
   ]
 }

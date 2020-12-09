@@ -160,7 +160,6 @@ const Deck = ({ currentDeck, showOptions = true, decksInfo, setDecksInfo }) => {
             updateDecksInfo={updateDecksInfo}
             value={value}
             setValue={setValue}
-            title={currentDeck.title}
           />
         ) : (
           <DeckTitle>{currentDeck.title}</DeckTitle>

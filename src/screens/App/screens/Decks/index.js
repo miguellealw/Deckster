@@ -1,3 +1,5 @@
+// NOT IN USE - CONSIDER DELETING
+
 import React from 'react'
 import MediaQuery from 'react-responsive'
 import styled from 'styled-components'

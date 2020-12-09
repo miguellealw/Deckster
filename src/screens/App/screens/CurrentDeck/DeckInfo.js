@@ -4,7 +4,7 @@ import 'styled-components/macro'
 import Deck from 'shared/components/Deck'
 import Button from 'shared/components/Button'
 
-const DeckInfo = ({ selectedDeck, numOfCards, currentDeck }) => (
+const DeckInfo = ({ selectedDeck, numOfCards }) => (
   <section
     css={`
       width: 100%;
@@ -41,13 +41,7 @@ const DeckInfo = ({ selectedDeck, numOfCards, currentDeck }) => (
           zIndex: 1,
         }}
       >
-        <Deck
-          title={selectedDeck.title}
-          firstCardName={selectedDeck.firstCardName}
-          tags={selectedDeck.tags}
-          showOptions={false}
-          currentDeck={currentDeck}
-        />
+        <Deck showOptions={false} currentDeck={selectedDeck} />
       </div>
 
       {/* Deck Info */}
