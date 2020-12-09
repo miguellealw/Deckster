@@ -1,6 +1,7 @@
 // Current Deck Screen
 import React, { useEffect, useState } from 'react'
 import 'styled-components/macro'
+import {Link} from "@reach/router"
 
 import { cardsAPI } from 'API'
 
@@ -113,20 +114,22 @@ const CurrentDeck = ({ decksInfo, deckId, closeModal }) => {
               >
                 Cards
               </h2>
-              <ClearButton
-                css={`
-                  color: #0064ff;
-                  border-width: 3px;
-                  background: none;
+              <Link to="card-editor">
+                <ClearButton
+                  css={`
+                    color: #0064ff;
+                    border-width: 3px;
+                    background: none;
 
-                  :hover {
-                    color: white;
-                  }
-                `}
-                onClick={() => setCreateCardModalOpen(true)}
-              >
-                New Card
-              </ClearButton>
+                    :hover {
+                      color: white;
+                    }
+                  `}
+                  // onClick={() => setCreateCardModalOpen(true)}
+                >
+                  New Card
+                </ClearButton>
+              </Link>
             </div>
 
             {/* Cards */}

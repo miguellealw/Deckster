@@ -13,6 +13,7 @@ const Profile = React.lazy(() => import('./screens/Profile'))
 const Decks = React.lazy(() => import('./screens/Decks'))
 const Explore = React.lazy(() => import('./screens/Explore'))
 const CurrentDeck = React.lazy(() => import('./screens/CurrentDeck'))
+const CardEditor = React.lazy(() => import('./screens/CardEditor'))
 const Login = React.lazy(() => import('./screens/Auth/Login'))
 const Signup = React.lazy(() => import('./screens/Auth/Signup'))
 
@@ -97,11 +98,11 @@ const App = () => {
   const [decksInfo, setDecksInfo] = useState([])
   const [currentDeck, setCurrentDeck] = useState(null)
 
+  // TODO: figure out how to seperate modal states from different kinds of modals (update card, create card, new deck, etc.)
   // Modal State
   const [isModalOpen, setModalOpen] = React.useState(false)
   const closeModal = () => setModalOpen(false)
   const openModal = () => setModalOpen(true)
-  
 
   useEffect(() => {
     async function fetchDecks() {
@@ -117,7 +118,6 @@ const App = () => {
       <GlobalStyle />
       <Suspense
         fallback={
-          // FIXME: fix loader
           <ThemeProvider theme={theme}>
             <LoaderContainer>
               <Logo
@@ -156,6 +156,7 @@ const App = () => {
                 closeModal={closeModal}
                 openModal={openModal}
               />
+              <CardEditor path="/profile/my-decks/:deckId/card-editor"/>
             </Router>
           </Layout>
         </ThemeProvider>
