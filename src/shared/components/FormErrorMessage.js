@@ -15,4 +15,3 @@ export default styled.span`
     rgba(252, 69, 131, 1) 100%
   );
 `
-

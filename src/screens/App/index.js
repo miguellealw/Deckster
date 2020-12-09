@@ -156,7 +156,7 @@ const App = () => {
                 closeModal={closeModal}
                 openModal={openModal}
               />
-              <CardEditor path="/profile/my-decks/:deckId/card-editor"/>
+              <CardEditor path="/profile/my-decks/:deckId/card-editor" />
             </Router>
           </Layout>
         </ThemeProvider>
