@@ -1,3 +1,8 @@
-# Deckster
+<p align="center">
+	<img src="./public/banner.png"/>
+</p>
+---
 
-📇 Flashcard Application - WIP 👷‍
+📇 Deckster - WIP 👷‍
+Create Flashcards with Rich Text and LaTeX
+
